@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/core/themes/theme.dart';
 
 import 'package:get/get.dart';
 
@@ -10,8 +11,7 @@ void main() {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      theme: ThemeData(
-          colorScheme: ColorScheme.light(onSecondary: Color(0xff0078D4))),
+      theme: AppTheme.instance.lightTheme,
     ),
   );
 }
