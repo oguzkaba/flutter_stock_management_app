@@ -13,8 +13,8 @@ class AppConstants {
 
   static List<IconData> navIconList = [
     Icons.home,
-    Icons.add,
-    Icons.import_export_outlined,
+    Icons.add_circle,
+    Icons.mediation_rounded,
     Icons.print,
     Icons.settings,
     Icons.exit_to_app

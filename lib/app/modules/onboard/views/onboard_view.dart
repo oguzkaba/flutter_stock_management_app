@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
 import 'package:get/get.dart';
 
+import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/colors_constants.dart';
 import '../../home/controllers/home_controller.dart';
 import '../../home/views/home_view.dart';
-import '../../widgets/custom_divider.dart';
 import '../controllers/onboard_controller.dart';
 
 class OnboardView extends GetView<OnboardController> {
@@ -24,7 +23,7 @@ class OnboardView extends GetView<OnboardController> {
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  Image.asset('assets/images/logo.png', width: 40),
+                  Image.asset('assets/images/logo.png', width: 32),
                   SizedBox(width: 8),
                   Text('Stock Management',
                       overflow: TextOverflow.ellipsis,
@@ -38,11 +37,19 @@ class OnboardView extends GetView<OnboardController> {
                   return Obx(() => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: ListTile(
+                          hoverColor: ColorConstants.myWhite,
                           leading: Icon(
                             AppConstants.navIconList[index],
                           ),
                           title: Text(AppConstants.navLabelList[index],
-                              style: Theme.of(context).textTheme.bodySmall),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: index == controller.pageIndex.value
+                                        ? ColorConstants.secondaryColor
+                                        : ColorConstants.myMediumGrey,
+                                  )),
                           onTap: () {
                             controller.pageIndex.value = index;
                             debugPrint('index ');
