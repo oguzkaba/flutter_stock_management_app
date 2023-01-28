@@ -11,26 +11,24 @@ class AppTheme {
 
   AppTheme._init();
 
-  ThemeData get darkTheme => ThemeData.dark().copyWith(
-      brightness: Brightness.dark,
-      textTheme: _textThemeDark,
-      primaryTextTheme: _primaryTextTheme,
-      colorScheme: _colorScheme,
-      appBarTheme: _appBarThemeDark,
-      navigationBarTheme: _bottomNavBarThemeDark,
-      expansionTileTheme: _expansionTileTheme,
-      inputDecorationTheme: _inputTheme,
-      scaffoldBackgroundColor: ColorConstants.myDark);
+//!  Light Theme
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
+        useMaterial3: true,
         brightness: Brightness.light,
         scaffoldBackgroundColor: ColorConstants.myWhite,
         textTheme: _textThemeLight,
         primaryTextTheme: _primaryTextTheme,
-        colorScheme: _colorScheme,
-        appBarTheme: _appBarThemeLight,
-        navigationBarTheme: _bottomNavBarThemeLight,
-        expansionTileTheme: _expansionTileTheme,
+        inputDecorationTheme: _inputTheme,
+      );
+
+//!  Dark Theme
+
+  ThemeData get darkTheme => ThemeData.dark().copyWith(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        textTheme: _textThemeDark,
+        primaryTextTheme: _primaryTextTheme,
         inputDecorationTheme: _inputTheme,
       );
 
@@ -45,8 +43,7 @@ class AppTheme {
             color: ColorConstants.primaryColor, fontWeight: FontWeight.bold),
         labelLarge: TextStyle(color: ColorConstants.myMediumGrey),
         labelMedium: TextStyle(
-            color: ColorConstants.myDark, fontWeight: FontWeight.bold),
-        labelSmall: TextStyle(color: ColorConstants.myLightGrey),
+            color: ColorConstants.myBlack, fontWeight: FontWeight.bold),
         bodySmall: TextStyle(
             fontWeight: FontWeight.bold, color: ColorConstants.myDark),
       )
@@ -66,7 +63,6 @@ class AppTheme {
         labelLarge: TextStyle(color: ColorConstants.myLightGrey),
         labelMedium: TextStyle(
             color: ColorConstants.myLightGrey, fontWeight: FontWeight.bold),
-        labelSmall: TextStyle(color: ColorConstants.myLightGrey),
         bodySmall: TextStyle(
             fontWeight: FontWeight.bold, color: ColorConstants.myWhite),
       )
@@ -81,60 +77,7 @@ class AppTheme {
   InputDecorationTheme get _inputTheme =>
       InputDecorationTheme(prefixIconColor: ColorConstants.primaryColor);
 
-  ColorScheme get _colorScheme => ThemeData().colorScheme.copyWith(
-      primary: ColorConstants.primaryColor,
-      secondary: ColorConstants.secondaryColor);
-
-  ExpansionTileThemeData get _expansionTileTheme => ExpansionTileThemeData(
-        backgroundColor: ColorConstants.myWhite,
-        collapsedBackgroundColor: ColorConstants.myWhite,
-        tilePadding: EdgeInsets.zero,
-        childrenPadding: EdgeInsets.zero,
-      );
-
-  NavigationBarThemeData get _bottomNavBarThemeLight => NavigationBarThemeData(
-      backgroundColor: Colors.grey[100],
-      surfaceTintColor: ColorConstants.myTransparent,
-      indicatorShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5))),
-      iconTheme: MaterialStateProperty.resolveWith(
-          (states) => IconThemeData(color: ColorConstants.primaryColor)),
-      labelTextStyle: MaterialStateTextStyle.resolveWith(
-        (states) => TextStyle(
-            fontSize: 10,
-            color: ColorConstants.myMediumGrey,
-            fontWeight: FontWeight.bold),
-      ));
-
-  NavigationBarThemeData get _bottomNavBarThemeDark => NavigationBarThemeData(
-      backgroundColor: ColorConstants.myDark.withOpacity(.8),
-      elevation: 10,
-      indicatorShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5))),
-      iconTheme: MaterialStateProperty.resolveWith(
-          (states) => IconThemeData(color: ColorConstants.primaryColor)),
-      labelTextStyle: MaterialStateTextStyle.resolveWith(
-        (states) => TextStyle(fontSize: 10, color: ColorConstants.myLightGrey),
-      ));
-
-  AppBarTheme get _appBarThemeLight => AppBarTheme(
-      iconTheme: IconThemeData(color: ColorConstants.primaryColor),
-      elevation: 0,
-      actionsIconTheme: IconThemeData(color: ColorConstants.primaryColor),
-      backgroundColor: ColorConstants.myWhite,
-      titleTextStyle: TextStyle(
-          color: ColorConstants.primaryColor,
-          fontSize: 16,
-          fontWeight: FontWeight.bold));
-
-  AppBarTheme get _appBarThemeDark => AppBarTheme(
-      toolbarHeight: 40,
-      elevation: 0,
-      iconTheme: IconThemeData(color: ColorConstants.primaryColor),
-      actionsIconTheme: IconThemeData(color: ColorConstants.primaryColor),
-      backgroundColor: ColorConstants.myMediumGrey,
-      titleTextStyle: TextStyle(
-          color: ColorConstants.primaryColor,
-          fontSize: 16,
-          fontWeight: FontWeight.bold));
+  // ColorScheme get _colorScheme => ThemeData().colorScheme.copyWith(
+  //     primary: ColorConstants.primaryColor,
+  //     secondary: ColorConstants.secondaryColor);
 }

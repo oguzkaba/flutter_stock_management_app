@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/colors_constants.dart';
 import '../../home/controllers/home_controller.dart';
-import '../../home/views/home_view.dart';
 import '../controllers/onboard_controller.dart';
 
 class OnboardView extends GetView<OnboardController> {
@@ -13,67 +12,118 @@ class OnboardView extends GetView<OnboardController> {
     Get.put<HomeController>(HomeController());
     return Row(
       children: [
-        Expanded(
-            child: Drawer(
-          backgroundColor: ColorConstants.myLightGrey,
-          child: Column(
-            children: [
-              SizedBox(height: 8),
-              Wrap(
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Image.asset('assets/images/logo.png', width: 32),
-                  SizedBox(width: 8),
-                  Text('Stock Management',
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                ],
-              ),
-              SizedBox(height: 40),
-              ListView.builder(
-                itemCount: AppConstants.navLabelList.length,
-                itemBuilder: (context, index) {
-                  return Obx(() => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ListTile(
-                          hoverColor: ColorConstants.myWhite,
-                          leading: Icon(
-                            AppConstants.navIconList[index],
-                          ),
-                          title: Text(AppConstants.navLabelList[index],
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(
-                                    color: index == controller.pageIndex.value
-                                        ? ColorConstants.secondaryColor
-                                        : ColorConstants.myMediumGrey,
-                                  )),
-                          onTap: () {
-                            controller.pageIndex.value = index;
-                            debugPrint('index ');
-                          },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          selectedTileColor: index == controller.pageIndex.value
-                              ? ColorConstants.myWhite
-                              : ColorConstants.myMediumGrey,
-                          selected: index == controller.pageIndex.value
-                              ? true
-                              : false,
-                        ),
-                      ));
-                },
-                shrinkWrap: true,
-                padding: EdgeInsets.symmetric(vertical: 8),
-              ),
+        Obx(() => NavigationRail(
+            unselectedIconTheme:
+                IconThemeData(color: ColorConstants.myMediumGrey, size: 20),
+            unselectedLabelTextStyle: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(
+                    color: ColorConstants.myMediumGrey,
+                    fontWeight: FontWeight.w500),
+            groupAlignment: 0,
+            labelType: NavigationRailLabelType.all,
+            useIndicator: true,
+            indicatorColor: ColorConstants.myBlack,
+            backgroundColor: ColorConstants.myLightGrey,
+            leading: _buildLeading(context),
+            destinations: [
+              for (var i = 0; i < AppConstants.navLabelList.length; i++)
+                NavigationRailDestination(
+                    icon: Icon(AppConstants.navIconList[i]),
+                    label: Text(
+                      AppConstants.navLabelList[i],
+                    )),
             ],
-          ),
-        )),
-        VerticalDivider(thickness: 1, width: 1),
-        Expanded(flex: 5, child: HomeView())
+            selectedIndex: controller.pageIndex.value,
+            onDestinationSelected: (value) => controller.setPageIndex(value),
+            trailing: _buildTrailing(context))),
+        Expanded(
+            child: Obx(() => Scaffold(
+                  appBar: AppBar(
+                      title: Row(
+                        children: [
+                          Text(AppConstants
+                              .navLabelList[controller.pageIndex.value]),
+                          Spacer(),
+                          _buildSearchBox(),
+                        ],
+                      ),
+                      actions: _buildAppBarActions(context)),
+                )))
       ],
+    );
+  }
+
+  List<Widget> _buildAppBarActions(BuildContext context) => [
+        IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications,
+                size: 20, color: ColorConstants.myMediumGrey)),
+        IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.settings,
+                size: 20, color: ColorConstants.myMediumGrey)),
+        AppConstants.horizontalPaddingSmall,
+        CircleAvatar(
+          radius: 22,
+          child: CircleAvatar(
+            radius: 20,
+            backgroundImage: AssetImage('assets/images/avatar.png'),
+          ),
+        ),
+        AppConstants.horizontalPaddingSmall,
+        Align(
+            alignment: Alignment.center,
+            child: Text('Oguz KABA',
+                style: Theme.of(context).textTheme.labelMedium)),
+        AppConstants.horizontalPaddingSmall,
+      ];
+
+  SizedBox _buildSearchBox() {
+    return SizedBox(
+      width: controller.serchBoxFocus.value ? Get.width - 450 : 200,
+      child: TextField(
+          focusNode: controller.focus,
+          onSubmitted: (value) => debugPrint('Search Enter Key'),
+          decoration: InputDecoration(
+              prefixIcon: Icon(Icons.search_rounded,
+                  color: ColorConstants.myMediumGrey),
+              hintText: 'Search here...',
+              hintStyle: TextStyle(
+                fontSize: 12,
+              ),
+              contentPadding: EdgeInsets.fromLTRB(8, 2, 8, 0),
+              filled: true,
+              fillColor: ColorConstants.myLightGrey,
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(style: BorderStyle.none, width: 0),
+                  borderRadius: BorderRadius.all(Radius.circular(10))))),
+    );
+  }
+
+  Column _buildLeading(BuildContext context) {
+    return Column(
+      children: [
+        Image.asset('assets/images/logo.png', width: 32),
+        Text('Stocker',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                foreground: Paint()..shader = linearGradient)),
+        SizedBox(height: 32),
+      ],
+    );
+  }
+
+  Expanded _buildTrailing(BuildContext context) {
+    return Expanded(
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child:
+                Text('v.1.0.0', style: Theme.of(context).textTheme.labelSmall)),
+      ),
     );
   }
 }
