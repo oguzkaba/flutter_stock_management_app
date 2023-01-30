@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'app/core/themes/theme.dart';
 import 'app/routes/app_pages.dart';
 
-void main() {
+Future<void> main() async {
+  await GetStorage.init();
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
@@ -12,6 +15,8 @@ void main() {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: AppTheme.instance.lightTheme,
+      darkTheme: AppTheme.instance.darkTheme,
+      themeMode: ThemeController().getThemeMode(),
     ),
   );
 

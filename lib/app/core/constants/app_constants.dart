@@ -10,8 +10,8 @@ class AppConstants {
     'Distribute',
     'Report',
     'Print',
+    'Settings',
     'Help',
-    'Logout',
   ];
 
   static List<IconData> navIconList = [
@@ -20,8 +20,8 @@ class AppConstants {
     Icons.mediation_rounded,
     Icons.insert_chart_rounded,
     Icons.print,
+    Icons.settings,
     Icons.help_rounded,
-    Icons.exit_to_app_rounded
   ];
 
   //! Padding

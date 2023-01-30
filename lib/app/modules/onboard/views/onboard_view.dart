@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/colors_constants.dart';
-import '../../home/controllers/home_controller.dart';
+import '../../../routes/app_pages.dart';
+import '../../widgets/custom_iconbutton.dart';
+import '../../widgets/custom_textfield.dart';
 import '../controllers/onboard_controller.dart';
 
 class OnboardView extends GetView<OnboardController> {
   @override
   Widget build(BuildContext context) {
-    Get.put<HomeController>(HomeController());
     return Row(
       children: [
         Obx(() => NavigationRail(
@@ -25,7 +27,9 @@ class OnboardView extends GetView<OnboardController> {
             labelType: NavigationRailLabelType.all,
             useIndicator: true,
             indicatorColor: ColorConstants.myBlack,
-            backgroundColor: ColorConstants.myLightGrey,
+            backgroundColor: Get.isDarkMode
+                ? Theme.of(context).navigationRailTheme.backgroundColor
+                : ColorConstants.myLightGrey,
             leading: _buildLeading(context),
             destinations: [
               for (var i = 0; i < AppConstants.navLabelList.length; i++)
@@ -41,6 +45,8 @@ class OnboardView extends GetView<OnboardController> {
         Expanded(
             child: Obx(() => Scaffold(
                   appBar: AppBar(
+                      backgroundColor:
+                          Theme.of(context).scaffoldBackgroundColor,
                       title: Row(
                         children: [
                           Text(AppConstants
@@ -56,19 +62,21 @@ class OnboardView extends GetView<OnboardController> {
   }
 
   List<Widget> _buildAppBarActions(BuildContext context) => [
-        IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications,
-                size: 20, color: ColorConstants.myMediumGrey)),
-        IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.settings,
-                size: 20, color: ColorConstants.myMediumGrey)),
+        Badge(
+            child:
+                CustomIconButton(iconData: Icons.notifications, onTap: () {})),
+        AppConstants.horizontalPaddingSmall,
+        CustomIconButton(
+            iconData: Get.isDarkMode
+                ? Icons.light_mode_rounded
+                : Icons.dark_mode_rounded,
+            onTap: () => ThemeController().changeThemeMode()),
         AppConstants.horizontalPaddingSmall,
         CircleAvatar(
-          radius: 22,
+          backgroundColor: ColorConstants.myBlack,
+          radius: 19,
           child: CircleAvatar(
-            radius: 20,
+            radius: 18,
             backgroundImage: AssetImage('assets/images/avatar.png'),
           ),
         ),
@@ -83,22 +91,12 @@ class OnboardView extends GetView<OnboardController> {
   SizedBox _buildSearchBox() {
     return SizedBox(
       width: controller.serchBoxFocus.value ? Get.width - 450 : 200,
-      child: TextField(
+      child: CustomTextField(
           focusNode: controller.focus,
           onSubmitted: (value) => debugPrint('Search Enter Key'),
-          decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search_rounded,
-                  color: ColorConstants.myMediumGrey),
-              hintText: 'Search here...',
-              hintStyle: TextStyle(
-                fontSize: 12,
-              ),
-              contentPadding: EdgeInsets.fromLTRB(8, 2, 8, 0),
-              filled: true,
-              fillColor: ColorConstants.myLightGrey,
-              border: OutlineInputBorder(
-                  borderSide: BorderSide(style: BorderStyle.none, width: 0),
-                  borderRadius: BorderRadius.all(Radius.circular(10))))),
+          fillColor: ColorConstants.myLightGrey,
+          hintText: 'Search here...',
+          prefixIconData: Icons.search),
     );
   }
 
@@ -121,8 +119,25 @@ class OnboardView extends GetView<OnboardController> {
         alignment: Alignment.bottomCenter,
         child: Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child:
-                Text('v.1.0.0', style: Theme.of(context).textTheme.labelSmall)),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(elevation: 0),
+                      onPressed: () => Get.offAllNamed(Routes.LOGIN),
+                      icon: Icon(Icons.exit_to_app_rounded,
+                          size: 16, color: ColorConstants.myDarkRed),
+                      label: Text('Exit',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(fontSize: 10))),
+                ),
+                SizedBox(height: 8),
+                Text('v.1.0.0', style: Theme.of(context).textTheme.labelSmall),
+              ],
+            )),
       ),
     );
   }
