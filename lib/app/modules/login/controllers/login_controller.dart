@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  final count = 0.obs;
+  final _visiblePass = true.obs;
 
   @override
   void onClose() {}
-  void increment() => count.value++;
+  bool get visiblePass => _visiblePass.value;
+  void toggleVisible() => _visiblePass.value = !_visiblePass.value;
 }

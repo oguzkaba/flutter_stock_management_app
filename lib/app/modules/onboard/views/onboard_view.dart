@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/colors_constants.dart';
+import '../../../core/controllers/theme_controller.dart';
 import '../../../routes/app_pages.dart';
 import '../../widgets/custom_iconbutton.dart';
 import '../../widgets/custom_textfield.dart';

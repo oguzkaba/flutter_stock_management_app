@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../../core/constants/colors_constants.dart';
 
 class CustomIconButton extends StatelessWidget {
-  final IconData iconData;
-  final VoidCallback onTap;
+  final IconData? iconData;
+  final VoidCallback? onTap;
   final Color? color;
   const CustomIconButton(
       {super.key, required this.iconData, required this.onTap, this.color});

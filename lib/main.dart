@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:window_manager/window_manager.dart';
 
+import 'app/core/controllers/theme_controller.dart';
 import 'app/core/themes/theme.dart';
 import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
+  if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
+    WidgetsFlutterBinding.ensureInitialized();
+    await windowManager.ensureInitialized();
+
+    WindowOptions windowOptions = WindowOptions(
+      minimumSize: Size(800, 600),
+      center: true,
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      //titleBarStyle: TitleBarStyle.hidden,
+    );
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  }
+
   await GetStorage.init();
   runApp(
     GetMaterialApp(
+      defaultTransition: Transition.native,
       debugShowCheckedModeBanner: false,
       title: "Application",
       initialRoute: AppPages.INITIAL,
@@ -19,14 +38,4 @@ Future<void> main() async {
       themeMode: ThemeController().getThemeMode(),
     ),
   );
-
-  // doWhenWindowReady(() {
-  //   const initialSize = Size(1024, 768);
-  //   appWindow.minSize = initialSize;
-  //   // appWindow.maximizeOrRestore();
-  //   appWindow.size = initialSize;
-  //   appWindow.alignment = Alignment.center;
-  //   appWindow.title = "Stock Management";
-  //   appWindow.show();
-  // });
 }
