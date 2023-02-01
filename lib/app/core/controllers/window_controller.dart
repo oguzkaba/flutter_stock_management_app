@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:get/get.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -7,8 +6,11 @@ class WindowController extends GetxController with WindowListener {
   static final instance = Get.find();
   @override
   void onInit() {
-    windowManager.addListener(this);
-    _init();
+    if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
+      windowManager.addListener(this);
+      _init();
+    }
+
     super.onInit();
   }
 

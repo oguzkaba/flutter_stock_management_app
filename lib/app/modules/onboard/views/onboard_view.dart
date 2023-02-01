@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
+import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/colors_constants.dart';
-import '../../../core/controllers/theme_controller.dart';
 import '../../../routes/app_pages.dart';
 import '../../widgets/custom_iconbutton.dart';
 import '../../widgets/custom_textfield.dart';
@@ -56,6 +57,10 @@ class OnboardView extends GetView<OnboardController> {
                         ],
                       ),
                       actions: _buildAppBarActions(context)),
+                  body: IndexedStack(
+                    index: 0,
+                    children: [HomeView()],
+                  ),
                 )))
       ],
     );

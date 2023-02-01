@@ -7,10 +7,12 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  excel: ^2.0.1
   flutter:
     sdk: flutter
   get: 4.6.5
   get_storage: ^2.0.3
+  syncfusion_flutter_datagrid: ^20.4.44
   window_manager: ^0.3.0
 
 dev_dependencies:
@@ -27,6 +29,7 @@ flutter:
     - assets/fonts/
     #- assets/lotties/
     #- assets/jsons/
+    - assets/kitap.xlsx
 
   fonts:
     - family: Montserrat
