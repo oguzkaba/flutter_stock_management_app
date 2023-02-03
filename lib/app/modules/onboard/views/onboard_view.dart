@@ -16,6 +16,7 @@ class OnboardView extends GetView<OnboardController> {
     return Row(
       children: [
         Obx(() => NavigationRail(
+            selectedIconTheme: IconThemeData(color: ColorConstants.myWhite),
             unselectedIconTheme:
                 IconThemeData(color: ColorConstants.myMediumGrey, size: 20),
             unselectedLabelTextStyle: Theme.of(context)
