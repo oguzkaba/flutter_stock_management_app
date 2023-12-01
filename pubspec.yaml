@@ -29,7 +29,7 @@ flutter:
     #- assets/images/svg/
     - assets/fonts/
     #- assets/lotties/
-    #- assets/jsons/
+    - assets/jsons/
     - assets/kitap.xlsx
 
   fonts:

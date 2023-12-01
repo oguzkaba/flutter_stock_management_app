@@ -14,8 +14,11 @@ class AppTheme {
 //!  Light Theme
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
-        useMaterial3: true,
-        brightness: Brightness.light,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: ColorConstants.primaryColor,
+          primary: ColorConstants.primaryColor,
+          brightness: Brightness.light,
+        ),
         scaffoldBackgroundColor: ColorConstants.myWhite,
         textTheme: _textThemeLight,
         primaryTextTheme: _primaryTextTheme,
@@ -25,8 +28,11 @@ class AppTheme {
 //!  Dark Theme
 
   ThemeData get darkTheme => ThemeData.dark().copyWith(
-        useMaterial3: true,
-        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: ColorConstants.primaryColor,
+          brightness: Brightness.dark,
+        ),
+        scaffoldBackgroundColor: Color(0xFF0B0B0B),
         textTheme: _textThemeDark,
         primaryTextTheme: _primaryTextTheme,
         inputDecorationTheme: _inputTheme,
@@ -76,8 +82,4 @@ class AppTheme {
 
   InputDecorationTheme get _inputTheme =>
       InputDecorationTheme(prefixIconColor: ColorConstants.primaryColor);
-
-  // ColorScheme get _colorScheme => ThemeData().colorScheme.copyWith(
-  //     primary: ColorConstants.primaryColor,
-  //     secondary: ColorConstants.secondaryColor);
 }

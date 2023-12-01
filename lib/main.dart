@@ -17,8 +17,9 @@ Future<void> main() async {
       center: true,
       backgroundColor: Colors.transparent,
       skipTaskbar: false,
-      //titleBarStyle: TitleBarStyle.hidden,
+      title: "Stocker",
     );
+
     windowManager.waitUntilReadyToShow(windowOptions, () async {
       await windowManager.show();
       await windowManager.focus();
@@ -30,7 +31,6 @@ Future<void> main() async {
     GetMaterialApp(
       defaultTransition: Transition.native,
       debugShowCheckedModeBanner: false,
-      title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: AppTheme.instance.lightTheme,

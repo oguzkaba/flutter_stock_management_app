@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_iconbutton.dart';
+import 'package:get/get.dart';
 
 import '../../core/constants/colors_constants.dart';
 
@@ -32,6 +33,8 @@ class CustomTextField extends StatelessWidget {
         focusNode: focusNode,
         onSubmitted: onSubmitted,
         obscureText: obsecureText ?? false,
+        style:
+            context.textTheme.bodySmall?.copyWith(color: ColorConstants.myDark),
         decoration: InputDecoration(
             prefixIcon: Icon(prefixIconData,
                 color: ColorConstants.myMediumGrey, size: 18),
@@ -39,8 +42,7 @@ class CustomTextField extends StatelessWidget {
                 CustomIconButton(iconData: suffixIconData, onTap: onPressed),
             hintText: hintText,
             hintStyle: TextStyle(
-                fontSize: 12,
-                color: ColorConstants.myMediumGrey.withOpacity(.4)),
+                fontSize: 12, color: ColorConstants.myDark.withOpacity(.4)),
             contentPadding: EdgeInsets.zero,
             filled: true,
             fillColor: fillColor,
