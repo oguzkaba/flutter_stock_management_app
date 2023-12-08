@@ -1,8 +1,10 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/core/extensions/color_extension.dart';
 
 class ColorConstants {
-  static Color primaryColor = '0D62AB'.toColor;
+  static Color primaryColor = '166FBD'.toColor;
   static Color secondaryColor = '199BE2'.toColor;
   static Color skyBlue = '50E6FF'.toColor;
   static Color myYellow = 'FFC107'.toColor;
@@ -26,4 +28,4 @@ final Shader linearGradient = LinearGradient(
     ColorConstants.secondaryColor,
     ColorConstants.primaryColor,
   ],
-).createShader(Rect.fromLTWH(0.0, 0.0, 75.0, 50.0));
+).createShader(const Rect.fromLTWH(0, 0, 75, 50));

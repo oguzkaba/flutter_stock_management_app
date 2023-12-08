@@ -1,24 +1,26 @@
+import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:flutter_stock_management_app/app/core/controllers/window_controller.dart';
+import 'package:flutter_stock_management_app/app/modules/home/controllers/home_controller.dart';
+import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
 import 'package:get/get.dart';
 
-import '../../../core/controllers/theme_controller.dart';
-import '../../home/controllers/home_controller.dart';
-import '../controllers/onboard_controller.dart';
-
+/// The `class OnboardBinding extends Bindings` is creating a binding class for the `Onboard` module in
+/// the Flutter Stock Management App.
 class OnboardBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<OnboardController>(
-      () => OnboardController(),
-    );
-    Get.lazyPut<ThemeController>(
-      () => ThemeController(),
-    );
-    Get.lazyPut<HomeController>(
-      () => HomeController(),
-    );
-    Get.put<WindowController>(
-      WindowController(),
-    );
+    Get
+      ..lazyPut<OnboardController>(
+        OnboardController.new,
+      )
+      ..lazyPut<ThemeController>(
+        ThemeController.new,
+      )
+      ..lazyPut<HomeController>(
+        HomeController.new,
+      )
+      ..put<WindowController>(
+        WindowController(),
+      );
   }
 }

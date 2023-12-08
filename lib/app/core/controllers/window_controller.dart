@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:window_manager/window_manager.dart';
 
+/// The `WindowController` class is a controller class that extends the `GetxController` class and
+/// implements the `WindowListener` interface.
 class WindowController extends GetxController with WindowListener {
-  static final instance = Get.find();
   @override
   void onInit() {
     if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
@@ -14,30 +15,28 @@ class WindowController extends GetxController with WindowListener {
     super.onInit();
   }
 
-  void _init() async {
+  Future<void> _init() async {
     await windowManager.setPreventClose(true);
   }
 
   @override
-  void onWindowClose() async {
-    bool isPreventClose = await windowManager.isPreventClose();
+  Future<void> onWindowClose() async {
+    final isPreventClose = await windowManager.isPreventClose();
     if (isPreventClose && !Get.isDialogOpen!) {
-      Get.defaultDialog(
+      await Get.defaultDialog<Widget>(
         title: 'Are you sure you want to close this window?',
         titleStyle: Theme.of(Get.context!).textTheme.titleLarge,
-        titlePadding: EdgeInsets.all(24),
+        titlePadding: const EdgeInsets.all(24),
         middleText: '',
         actions: [
           TextButton(
-            child: Text('No'),
-            onPressed: () {
-              Get.back();
-            },
+            onPressed: Get.back<dynamic>,
+            child: const Text('No'),
           ),
           TextButton(
-            child: Text('Yes'),
+            child: const Text('Yes'),
             onPressed: () async {
-              Get.back();
+              Get.back<dynamic>();
               await windowManager.destroy();
             },
           ),

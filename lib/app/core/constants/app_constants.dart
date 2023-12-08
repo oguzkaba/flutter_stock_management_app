@@ -1,6 +1,14 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
+/// The `class AppConstants` is a utility class that contains
+/// various constants and configurations for
+/// the application. It includes lists of navigation labels and icons,
+/// as well as padding constants for
+/// different sizes. These constants can be used throughout the application to
+/// maintain consistency and easily make changes in one place.
 class AppConstants {
   AppConstants._();
 

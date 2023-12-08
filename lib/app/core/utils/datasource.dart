@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+// ignore_for_file: sort_constructors_first, public_member_api_docs
 
-import '../controllers/datagrid_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/core/controllers/datagrid_controller.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class GridDataSource extends DataGridSource {
   List<DataGridRow> _employeeData = [];
@@ -9,48 +10,84 @@ class GridDataSource extends DataGridSource {
   /// Creates the employee data source class with required details.
   GridDataSource(DGController controller) {
     _employeeData = controller.dummyData
-        .map((rows) => DataGridRow(cells: [
+        .map(
+          (rows) => DataGridRow(
+            cells: [
               DataGridCell(
-                  columnName: controller.dataColumn[0], value: rows.siraNo),
+                columnName: controller.dataColumn[0],
+                value: rows.siraNo,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[1], value: rows.aracNo),
+                columnName: controller.dataColumn[1],
+                value: rows.aracNo,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[2],
-                  value: rows.malzemeninCinsi),
+                columnName: controller.dataColumn[2],
+                value: rows.malzemeninCinsi,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[3], value: rows.urunTanimi),
+                columnName: controller.dataColumn[3],
+                value: rows.urunTanimi,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[4], value: rows.rafNo),
+                columnName: controller.dataColumn[4],
+                value: rows.rafNo,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[5], value: rows.dn),
+                columnName: controller.dataColumn[5],
+                value: rows.dn,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[6], value: rows.itemNo),
+                columnName: controller.dataColumn[6],
+                value: rows.itemNo,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[7], value: rows.heatNo),
+                columnName: controller.dataColumn[7],
+                value: rows.heatNo,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[8], value: rows.adet),
+                columnName: controller.dataColumn[8],
+                value: rows.adet,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[9], value: rows.gelenAdet),
+                columnName: controller.dataColumn[9],
+                value: rows.gelenAdet,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[10], value: rows.iadeAdet),
+                columnName: controller.dataColumn[10],
+                value: rows.iadeAdet,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[11], value: rows.kalanAdet),
+                columnName: controller.dataColumn[11],
+                value: rows.kalanAdet,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[12], value: rows.kalite),
+                columnName: controller.dataColumn[12],
+                value: rows.kalite,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[13],
-                  value: rows.gelisTarihi),
+                columnName: controller.dataColumn[13],
+                value: rows.gelisTarihi,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[14],
-                  value: rows.gelenFirma.name),
+                columnName: controller.dataColumn[14],
+                value: rows.gelenFirma,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[15],
-                  value: rows.shipmentNumber),
+                columnName: controller.dataColumn[15],
+                value: rows.shipmentNumber,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[16], value: rows.sandikNo),
+                columnName: controller.dataColumn[16],
+                value: rows.sandikNo,
+              ),
               DataGridCell(
-                  columnName: controller.dataColumn[17], value: rows.not),
-            ]))
+                columnName: controller.dataColumn[17],
+                value: rows.not,
+              ),
+            ],
+          ),
+        )
         .toList();
   }
 
@@ -60,13 +97,17 @@ class GridDataSource extends DataGridSource {
   @override
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(
-        cells: row.getCells().map<Widget>((e) {
-      return Container(
-        alignment: Alignment.centerLeft,
-        padding: EdgeInsets.all(8.0),
-        child: Text(e.value.toString(),
-            softWrap: false, overflow: TextOverflow.ellipsis),
-      );
-    }).toList());
+      cells: row.getCells().map<Widget>((e) {
+        return Container(
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.all(8),
+          child: Text(
+            e.value.toString(),
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
+          ),
+        );
+      }).toList(),
+    );
   }
 }

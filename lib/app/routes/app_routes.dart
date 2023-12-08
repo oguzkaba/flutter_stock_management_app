@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, public_member_api_docs
 
 part of 'app_pages.dart';
 // DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
