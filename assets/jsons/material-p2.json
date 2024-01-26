@@ -1,0 +1,90 @@
+[
+    {
+        "id": "1",
+        "name": "NA"
+    },
+    {
+        "id": "2",
+        "name": "Plain End"
+    },
+    {
+        "id": "3",
+        "name": "Bevel End"
+    },
+    {
+        "id": "4",
+        "name": "Socket Weld"
+    },
+    {
+        "id": "5",
+        "name": "Threaded"
+    },
+    {
+        "id": "6",
+        "name": "Flanged"
+    },
+    {
+        "id": "7",
+        "name": "Welding Neck"
+    },
+    {
+        "id": "8",
+        "name": "Slip-On"
+    },
+    {
+        "id": "9",
+        "name": "Lapped"
+    },
+    {
+        "id": "10",
+        "name": "Blind"
+    },
+    {
+        "id": "11",
+        "name": "Plate"
+    },
+    {
+        "id": "12",
+        "name": "Ring"
+    },
+    {
+        "id": "13",
+        "name": "TOE(THRD ONE END)"
+    },
+    {
+        "id": "14",
+        "name": "PBE(PLAIN BOTH END)"
+    },
+    {
+        "id": "15",
+        "name": "BBE(BEVEL BOTH END)"
+    },
+    {
+        "id": "16",
+        "name": "TBE(THRD BOTH END)"
+    },
+    {
+        "id": "17",
+        "name": "LEB-SEP"
+    },
+    {
+        "id": "18",
+        "name": "LEB-SET"
+    },
+    {
+        "id": "19",
+        "name": "LEP-SEB"
+    },
+    {
+        "id": "20",
+        "name": "LEP-SET"
+    },
+    {
+        "id": "21",
+        "name": "LET-SEP"
+    },
+    {
+        "id": "22",
+        "name": "LET-SEB"
+    }
+]

@@ -3,6 +3,7 @@ import 'package:flutter_stock_management_app/app/core/constants/app_constants.da
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:flutter_stock_management_app/app/core/utils/responsive.dart';
+import 'package:flutter_stock_management_app/app/modules/add_material/views/add_material_view.dart';
 import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/views/widgets/drawer_widget.dart';
@@ -25,32 +26,37 @@ class OnboardView extends GetView<OnboardController> {
       children: [
         const Responsive(
           mobile: SizedBox.shrink(),
+          tablet: NavigationRailWidget(),
           desktop: NavigationRailWidget(),
         ),
         Expanded(
           child: Obx(
-            () => Scaffold(
-              drawer:
-                  !Responsive.isDesktop(context) ? const DrawerWidget() : null,
-              appBar: AppBar(
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                title: Row(
-                  children: [
-                    Text(
-                      AppConstants.navLabelList[controller.pageIndex],
-                    ),
-                    const Spacer(),
-                    _buildSearchBox(),
-                  ],
+            () => SafeArea(
+              child: Scaffold(
+                drawer: !Responsive.isDesktop(context)
+                    ? const DrawerWidget()
+                    : null,
+                appBar: AppBar(
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                  title: Row(
+                    children: [
+                      Text(
+                        AppConstants.navLabelList[controller.pageIndex],
+                      ),
+                      const Spacer(),
+                      _buildSearchBox(),
+                    ],
+                  ),
+                  actions: _buildAppBarActions(context),
                 ),
-                actions: _buildAppBarActions(context),
-              ),
-              body: const IndexedStack(
-                children: [HomeView()],
+                body: IndexedStack(
+                  index: controller.pageIndex,
+                  children: const [HomeView(), AddMaterialView()],
+                ),
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

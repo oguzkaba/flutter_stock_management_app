@@ -1,5 +1,6 @@
 import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:flutter_stock_management_app/app/core/controllers/window_controller.dart';
+import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,9 @@ class OnboardBinding extends Bindings {
       )
       ..put<WindowController>(
         WindowController(),
+      )
+      ..put<AddMaterialController>(
+        AddMaterialController(),
       );
   }
 }

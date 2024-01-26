@@ -50,11 +50,11 @@ class AppConstants {
       Padding(padding: EdgeInsets.symmetric(horizontal: Get.width * .05));
 
   static final verticalPaddingSmall =
-      Padding(padding: EdgeInsets.symmetric(vertical: Get.width * .01));
+      Padding(padding: EdgeInsets.symmetric(vertical: Get.height * .01));
   static final verticalPaddingMedium =
-      Padding(padding: EdgeInsets.symmetric(vertical: Get.width * .02));
+      Padding(padding: EdgeInsets.symmetric(vertical: Get.height * .02));
   static final verticalPaddingNormal =
-      Padding(padding: EdgeInsets.symmetric(vertical: Get.width * .03));
+      Padding(padding: EdgeInsets.symmetric(vertical: Get.height * .03));
   static final verticalPaddingLarge =
-      Padding(padding: EdgeInsets.symmetric(vertical: Get.width * .05));
+      Padding(padding: EdgeInsets.symmetric(vertical: Get.height * .05));
 }

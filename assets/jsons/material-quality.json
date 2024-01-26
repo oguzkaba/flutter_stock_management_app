@@ -1,0 +1,488 @@
+[
+    {
+        "id": "1",
+        "name": "S235JR",
+        "code": "1.0038",
+        "type": "CS"
+    },
+    {
+        "id": "2",
+        "name": "S235J0",
+        "code": "1.0114",
+        "type": "CS"
+    },
+    {
+        "id": "3",
+        "name": "S235J2",
+        "code": "1.0117",
+        "type": "CS"
+    },
+    {
+        "id": "4",
+        "name": "S275JR",
+        "code": "1.0044",
+        "type": "CS"
+    },
+    {
+        "id": "5",
+        "name": "S275J0",
+        "code": "1.0143",
+        "type": "CS"
+    },
+    {
+        "id": "6",
+        "name": "S275J2",
+        "code": "1.0145",
+        "type": "CS"
+    },
+    {
+        "id": "7",
+        "name": "S355J2",
+        "code": "1.0045",
+        "type": "CS"
+    },
+    {
+        "id": "8",
+        "name": "S355JR",
+        "code": "1.0553",
+        "type": "CS"
+    },
+    {
+        "id": "9",
+        "name": "S355J0",
+        "code": "1.0577",
+        "type": "CS"
+    },
+    {
+        "id": "10",
+        "name": "P235GH",
+        "code": "1.0345",
+        "type": "CS"
+    },
+    {
+        "id": "11",
+        "name": "P265GH",
+        "code": "1.0425",
+        "type": "CS"
+    },
+    {
+        "id": "12",
+        "name": "P295GH",
+        "code": "1.0481",
+        "type": "CS"
+    },
+    {
+        "id": "13",
+        "name": "P355GH",
+        "code": "1.0473",
+        "type": "CS"
+    },
+    {
+        "id": "14",
+        "name": "16Mo3",
+        "code": "1.5415",
+        "type": "AS"
+    },
+    {
+        "id": "15",
+        "name": "18MnMo4-5",
+        "code": "1.5414",
+        "type": "AS"
+    },
+    {
+        "id": "16",
+        "name": "20MnMoNi4-5",
+        "code": "1.6311",
+        "type": "AS"
+    },
+    {
+        "id": "17",
+        "name": "15NiCuMoNb5-6-4",
+        "code": "1.6368",
+        "type": "AS"
+    },
+    {
+        "id": "18",
+        "name": "13CrMo4-5",
+        "code": "1.7335",
+        "type": "AS"
+    },
+    {
+        "id": "19",
+        "name": "13CrMoSi5-5",
+        "code": "1.7336",
+        "type": "AS"
+    },
+    {
+        "id": "20",
+        "name": "10CrMo9-10",
+        "code": "1.7380",
+        "type": "AS"
+    },
+    {
+        "id": "21",
+        "name": "12CrMo9-10",
+        "code": "1.7375",
+        "type": "AS"
+    },
+    {
+        "id": "22",
+        "name": "X12CrMo5",
+        "code": "1.7362",
+        "type": "AS"
+    },
+    {
+        "id": "23",
+        "name": "13CrMoV9-10",
+        "code": "1.7703",
+        "type": "AS"
+    },
+    {
+        "id": "24",
+        "name": "12CrMoV12-10",
+        "code": "1.7767",
+        "type": "AS"
+    },
+    {
+        "id": "25",
+        "name": "X10CrMoVNb9-1",
+        "code": "1.4903",
+        "type": "AS"
+    },
+    {
+        "id": "26",
+        "name": "X2CrNi12",
+        "code": "1.4003",
+        "type": "SS"
+    },
+    {
+        "id": "27",
+        "name": "X6CrNiTi12",
+        "code": "1.4516",
+        "type": "SS"
+    },
+    {
+        "id": "28",
+        "name": "X2CrTi17",
+        "code": "1.4520",
+        "type": "SS"
+    },
+    {
+        "id": "29",
+        "name": "X3CrTi17",
+        "code": "1.4510",
+        "type": "SS"
+    },
+    {
+        "id": "30",
+        "name": "X2CrMoTi17-1",
+        "code": "1.4513",
+        "type": "SS"
+    },
+    {
+        "id": "31",
+        "name": "X2CrMoTi18-2",
+        "code": "1.4521",
+        "type": "SS"
+    },
+    {
+        "id": "32",
+        "name": "X6CrMoNb17-1",
+        "code": "1.4526",
+        "type": "SS"
+    },
+    {
+        "id": "33",
+        "name": "X2CrTiNb18",
+        "code": "1.4509",
+        "type": "SS"
+    },
+    {
+        "id": "34",
+        "name": "X3CrNiMo13-4",
+        "code": "1.4313",
+        "type": "SS"
+    },
+    {
+        "id": "35",
+        "name": "X4CrNiMo16-5-1",
+        "code": "1.4418",
+        "type": "SS"
+    },
+    {
+        "id": "36",
+        "name": "X2CrNiN18-7",
+        "code": "1.4318",
+        "type": "SS"
+    },
+    {
+        "id": "37",
+        "name": "X2CrNi18-9",
+        "code": "1.4307",
+        "type": "SS"
+    },
+    {
+        "id": "38",
+        "name": "X2CrNi19-11",
+        "code": "1.4306",
+        "type": "SS"
+    },
+    {
+        "id": "39",
+        "name": "X5CrNiN19-9",
+        "code": "1.4315",
+        "type": "SS"
+    },
+    {
+        "id": "40",
+        "name": "X2CrNiN18-10",
+        "code": "1.4311",
+        "type": "SS"
+    },
+    {
+        "id": "41",
+        "name": "X5CrNi18-10",
+        "code": "1.4301",
+        "type": "SS"
+    },
+    {
+        "id": "42",
+        "name": "X6CrNiTi18-10",
+        "code": "1.4541",
+        "type": "SS"
+    },
+    {
+        "id": "43",
+        "name": "X6CrNiNb18-10",
+        "code": "1.4550",
+        "type": "SS"
+    },
+    {
+        "id": "44",
+        "name": "X1CrNi25-21",
+        "code": "1.4335",
+        "type": "SS"
+    },
+    {
+        "id": "45",
+        "name": "X2CrNiMo17-12-2",
+        "code": "1.4404",
+        "type": "SS"
+    },
+    {
+        "id": "46",
+        "name": "X2CrNiMoN17-11-2",
+        "code": "1.4406",
+        "type": "SS"
+    },
+    {
+        "id": "47",
+        "name": "X5CrNiMo17-12-2",
+        "code": "1.4401",
+        "type": "SS"
+    },
+    {
+        "id": "48",
+        "name": "X1CrNiMoN25-22-2",
+        "code": "1.4466",
+        "type": "SS"
+    },
+    {
+        "id": "49",
+        "name": "X6CrNiMoTi17-12-2",
+        "code": "1.4571",
+        "type": "SS"
+    },
+    {
+        "id": "50",
+        "name": "X6CrNiMoNb17-12-2",
+        "code": "1.4580",
+        "type": "SS"
+    },
+    {
+        "id": "51",
+        "name": "X2CrNiMo17-12-3",
+        "code": "1.4432",
+        "type": "SS"
+    },
+    {
+        "id": "52",
+        "name": "X2CrNiMoN17-3-3",
+        "code": "1.4429",
+        "type": "SS"
+    },
+    {
+        "id": "53",
+        "name": "X3CrNiMo17-13-3",
+        "code": "1.4436",
+        "type": "SS"
+    },
+    {
+        "id": "54",
+        "name": "X2CrNiMo18-14-3",
+        "code": "1.4435",
+        "type": "SS"
+    },
+    {
+        "id": "55",
+        "name": "X2CrNiMoN18-12-4",
+        "code": "1.4434",
+        "type": "SS"
+    },
+    {
+        "id": "56",
+        "name": "X2CrNiMo18-15-4",
+        "code": "1.4438",
+        "type": "SS"
+    },
+    {
+        "id": "57",
+        "name": "X2CrNiMoN17-13-5",
+        "code": "1.4439",
+        "type": "SS"
+    },
+    {
+        "id": "58",
+        "name": "X1NiCrMo31-27-4",
+        "code": "1.4563",
+        "type": "SS"
+    },
+    {
+        "id": "59",
+        "name": "X1NiCrMoCu25-20-5",
+        "code": "1.4539",
+        "type": "SS"
+    },
+    {
+        "id": "60",
+        "name": "X1CrNiMoCuN25-25-5",
+        "code": "1.4537",
+        "type": "SS"
+    },
+    {
+        "id": "61",
+        "name": "X1CrNiMoCuN20-18-7",
+        "code": "1.4547",
+        "type": "SS"
+    },
+    {
+        "id": "62",
+        "name": "X1NiCrMoCuN25-20-7",
+        "code": "1.4529",
+        "type": "SS"
+    },
+    {
+        "id": "63",
+        "name": "X3CrNiMoBN17-13-3",
+        "code": "1.4910",
+        "type": "SS"
+    },
+    {
+        "id": "64",
+        "name": "X6CrNiTiB18-10",
+        "code": "1.4941",
+        "type": "SS"
+    },
+    {
+        "id": "65",
+        "name": "X6CrNi18-10",
+        "code": "1.4948",
+        "type": "SS"
+    },
+    {
+        "id": "66",
+        "name": "X6CrNi23-13",
+        "code": "1.4950",
+        "type": "SS"
+    },
+    {
+        "id": "67",
+        "name": "X6CrNi25.20",
+        "code": "1.4951",
+        "type": "SS"
+    },
+    {
+        "id": "68",
+        "name": "X5NiCrAlTi31-20",
+        "code": "1.4958 (+RA)",
+        "type": "SS"
+    },
+    {
+        "id": "69",
+        "name": "P245GH",
+        "code": "1.0352",
+        "type": "CS"
+    },
+    {
+        "id": "70",
+        "name": "P250GH",
+        "code": "1.0460",
+        "type": "CS"
+    },
+    {
+        "id": "71",
+        "name": "P280GH",
+        "code": "1.0426",
+        "type": "CS"
+    },
+    {
+        "id": "72",
+        "name": "P305GH",
+        "code": "1.0436",
+        "type": "CS"
+    },
+    {
+        "id": "73",
+        "name": "X20CrMoV11-1",
+        "code": "1.4922",
+        "type": "AS"
+    },
+    {
+        "id": "74",
+        "name": "15MnMoV4-5",
+        "code": "1.5402",
+        "type": "AS"
+    },
+    {
+        "id": "75",
+        "name": "18MnMoNi5-5",
+        "code": "1.6308",
+        "type": "AS"
+    },
+    {
+        "id": "76",
+        "name": "15MnCrMoNiV5-3",
+        "code": "1.6920",
+        "type": "AS"
+    },
+    {
+        "id": "77",
+        "name": "X16CrMo5-1",
+        "code": "1.7366",
+        "type": "AS"
+    },
+    {
+        "id": "78",
+        "name": "11CrMo9-10",
+        "code": "1.7383",
+        "type": "AS"
+    },
+    {
+        "id": "79",
+        "name": "14MoV6-3",
+        "code": "1.7715",
+        "type": "AS"
+    },
+    {
+        "id": "80",
+        "name": "S235",
+        "code": "NA",
+        "type": "CS"
+    },
+    {
+        "id": "81",
+        "name": "S265",
+        "code": "NA",
+        "type": "CS"
+    }
+]

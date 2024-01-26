@@ -1,0 +1,114 @@
+[
+    {
+        "id": "1",
+        "name": "Bushing"
+    },
+    {
+        "id": "2",
+        "name": "Cap"
+    },
+    {
+        "id": "3",
+        "name": "Clamp"
+    },
+    {
+        "id": "4",
+        "name": "Coupling"
+    },
+    {
+        "id": "5",
+        "name": "Cross"
+    },
+    {
+        "id": "6",
+        "name": "Drip Ring"
+    },
+    {
+        "id": "7",
+        "name": "Elbolet"
+    },
+    {
+        "id": "8",
+        "name": "Elbow"
+    },
+    {
+        "id": "9",
+        "name": "Flange"
+    },
+    {
+        "id": "10",
+        "name": "Gasket"
+    },
+    {
+        "id": "11",
+        "name": "Nipolet"
+    },
+    {
+        "id": "12",
+        "name": "Nipple"
+    },
+    {
+        "id": "13",
+        "name": "Other"
+    },
+    {
+        "id": "14",
+        "name": "Pipe"
+    },
+    {
+        "id": "15",
+        "name": "Plate"
+    },
+    {
+        "id": "16",
+        "name": "Plug"
+    },
+    {
+        "id": "17",
+        "name": "Profile"
+    },
+    {
+        "id": "18",
+        "name": "Reducer"
+    },
+    {
+        "id": "19",
+        "name": "Return"
+    },
+    {
+        "id": "20",
+        "name": "Sockolet"
+    },
+    {
+        "id": "21",
+        "name": "Spacer"
+    },
+    {
+        "id": "22",
+        "name": "Stub End"
+    },
+    {
+        "id": "23",
+        "name": "Studding Outlet"
+    },
+    {
+        "id": "24",
+        "name": "Sweepolet"
+    },
+    {
+        "id": "25",
+        "name": "Tee"
+    },
+    {
+        "id": "26",
+        "name": "Thredolet"
+    },
+    {
+        "id": "27",
+        "name": "Valve"
+    },
+    {
+        "id": "28",
+        "name": "Weldolet"
+    }
+]

@@ -16,9 +16,6 @@ List<DummyDataModel> dummyDataModelFromJson(String str) {
   );
 }
 
-String dummyDataModelToJson(List<DummyDataModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class DummyDataModel {
   DummyDataModel({
     this.siraNo,
@@ -79,25 +76,4 @@ class DummyDataModel {
   final String? shipmentNumber;
   final String? sandikNo;
   final String? not;
-
-  Map<String, dynamic> toJson() => {
-        'SIRA NO': siraNo,
-        'ARAÇ NO': aracNo,
-        'MALZEMENİN CİNSİ': malzemeninCinsi,
-        'ÜRÜN TANIMI': urunTanimi,
-        'RAF NO': rafNo,
-        'DN': dn,
-        'ITEM NO': itemNo,
-        'HEAT NO': heatNo,
-        'ADET': adet,
-        'GELEN ADET': gelenAdet,
-        'İADE ADET': iadeAdet,
-        'KALAN ADET': kalanAdet,
-        'KALİTE': kalite,
-        'GELİŞ TARİHİ': gelisTarihi,
-        'GELEN FİRMA': gelenFirma,
-        'SHIPMENT NUMBER': shipmentNumber,
-        'SANDIK NO': sandikNo,
-        'NOT': not,
-      };
 }

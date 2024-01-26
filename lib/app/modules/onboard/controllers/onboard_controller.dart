@@ -7,7 +7,8 @@ import 'package:get/get.dart';
 /// case, the `OnboardController` is responsible for managing the state and logic related to the
 /// onboarding process.
 class OnboardController extends GetxController {
-  final _pageIndex = 0.obs;
+  //TODO: PAGE INDEX CHANGE 1 TO 0
+  final _pageIndex = 1.obs;
 
   ///
   int get pageIndex => _pageIndex.value;
@@ -21,7 +22,6 @@ class OnboardController extends GetxController {
 
   @override
   void onInit() {
-    pageIndex = 0;
     focus.addListener(onFocusChange);
     super.onInit();
   }

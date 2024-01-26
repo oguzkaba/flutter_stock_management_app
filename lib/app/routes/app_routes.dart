@@ -9,10 +9,12 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const ONBOARD = _Paths.ONBOARD;
   static const LOGIN = _Paths.LOGIN;
+  static const ADD_MATERIAL = _Paths.ADD_MATERIAL;
 }
 
 abstract class _Paths {
   static const HOME = '/home';
   static const ONBOARD = '/onboard';
   static const LOGIN = '/login';
+  static const ADD_MATERIAL = '/add-material';
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/exit_button.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_exit_button.dart';
 import 'package:get/get.dart';
 
 /// The code is defining a class called `NavigationRailWidget` that extends the `StatelessWidget` class.
@@ -63,7 +63,7 @@ final class NavigationRailWidget extends StatelessWidget {
             foreground: Paint()..shader = linearGradient,
           ),
         ),
-        const SizedBox(height: 32)
+        const SizedBox(height: 32),
       ],
     );
   }
@@ -77,7 +77,7 @@ final class NavigationRailWidget extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const ExitButton(),
+              const CustomExitButton(),
               const SizedBox(height: 8),
               Text('v.1.0.0', style: Theme.of(context).textTheme.labelSmall),
             ],

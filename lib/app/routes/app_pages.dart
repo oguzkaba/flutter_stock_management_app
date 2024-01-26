@@ -1,6 +1,6 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/modules/add_material/bindings/add_material_binding.dart';
+import 'package:flutter_stock_management_app/app/modules/add_material/views/add_material_view.dart';
 import 'package:flutter_stock_management_app/app/modules/home/bindings/home_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
 import 'package:flutter_stock_management_app/app/modules/login/bindings/login_binding.dart';
@@ -8,6 +8,8 @@ import 'package:flutter_stock_management_app/app/modules/login/views/login_view.
 import 'package:flutter_stock_management_app/app/modules/onboard/bindings/onboard_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/views/onboard_view.dart';
 import 'package:get/get.dart';
+
+// ignore_for_file: constant_identifier_names
 
 part 'app_routes.dart';
 
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: LoginView.new,
       binding: LoginBinding(),
+    ),
+    GetPage<Widget>(
+      name: _Paths.ADD_MATERIAL,
+      page: () => const AddMaterialView(),
+      binding: AddMaterialBinding(),
     ),
   ];
 }

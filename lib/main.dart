@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:flutter_stock_management_app/app/core/themes/theme.dart';
@@ -28,14 +29,16 @@ Future<void> main() async {
   await GetStorage.init();
 
   runApp(
-    GetMaterialApp(
-      defaultTransition: Transition.native,
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      theme: AppTheme.instance.lightTheme,
-      darkTheme: AppTheme.instance.darkTheme,
-      themeMode: ThemeController().getThemeMode(),
+    DevicePreview(
+      builder: (context) => GetMaterialApp(
+        defaultTransition: Transition.native,
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes,
+        theme: AppTheme.instance.lightTheme,
+        darkTheme: AppTheme.instance.darkTheme,
+        themeMode: ThemeController().getThemeMode(),
+      ),
     ),
   );
 }

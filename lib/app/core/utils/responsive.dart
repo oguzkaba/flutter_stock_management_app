@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Responsive extends StatelessWidget {
   const Responsive({
@@ -18,7 +19,7 @@ class Responsive extends StatelessWidget {
 
   // This isMobile, isTablet, isDesktop helep us later
   static bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width < 850;
+      MediaQuery.of(context).size.width < 850 || GetPlatform.isMobile;
 
   static bool isTablet(BuildContext context) =>
       MediaQuery.of(context).size.width < 1100 &&
@@ -31,7 +32,7 @@ class Responsive extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     // If our width is more than 1100 then we consider it a desktop
-    if (size.width >= 1100) {
+    if (size.width >= 1100 && GetPlatform.isDesktop) {
       return desktop;
     }
     // If width it less then 1100 and more then 850 we consider it as tablet

@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "name": "NA"
+    },
+    {
+        "id": "2",
+        "name": "Straight"
+    },
+    {
+        "id": "3",
+        "name": "Reducer"
+    },
+    {
+        "id": "4",
+        "name": "Standart"
+    },
+    {
+        "id": "5",
+        "name": "Miter"
+    },
+    {
+        "id": "6",
+        "name": "Split"
+    },
+    {
+        "id": "7",
+        "name": "Street"
+    },
+    {
+        "id": "8",
+        "name": "Pipe"
+    },
+    {
+        "id": "9",
+        "name": "Swage"
+    }
+]

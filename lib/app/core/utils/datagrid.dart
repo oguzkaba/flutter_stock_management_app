@@ -24,7 +24,7 @@ class DataGridWidget extends StatelessWidget {
       ),
       const PopupMenuItem(
         child: Text('Delete Material'),
-      )
+      ),
     ];
     return Obx(
       () => controller.isLoading.value

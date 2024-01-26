@@ -1,0 +1,130 @@
+[
+    {
+        "id": "1",
+        "name": "NA"
+    },
+    {
+        "id": "2",
+        "name": "Hex"
+    },
+    {
+        "id": "3",
+        "name": "Flush"
+    },
+    {
+        "id": "4",
+        "name": "Seamless"
+    },
+    {
+        "id": "5",
+        "name": "Welded"
+    },
+    {
+        "id": "6",
+        "name": "Raised Face"
+    },
+    {
+        "id": "7",
+        "name": "Flat Face"
+    },
+    {
+        "id": "8",
+        "name": "Ring Type"
+    },
+    {
+        "id": "9",
+        "name": "Half"
+    },
+    {
+        "id": "10",
+        "name": "Pipe"
+    },
+    {
+        "id": "11",
+        "name": "Round"
+    },
+    {
+        "id": "12",
+        "name": "Square"
+    },
+    {
+        "id": "13",
+        "name": "HEB"
+    },
+    {
+        "id": "14",
+        "name": "HEA"
+    },
+    {
+        "id": "15",
+        "name": "HEM"
+    },
+    {
+        "id": "16",
+        "name": "IPN"
+    },
+    {
+        "id": "17",
+        "name": "IPE"
+    },
+    {
+        "id": "18",
+        "name": "UPN"
+    },
+    {
+        "id": "19",
+        "name": "UPE"
+    },
+    {
+        "id": "20",
+        "name": "Bracket"
+    },
+    {
+        "id": "21",
+        "name": "Bar"
+    },
+    {
+        "id": "22",
+        "name": "Angle"
+    },
+    {
+        "id": "23",
+        "name": "Square"
+    },
+    {
+        "id": "24",
+        "name": "Circular"
+    },
+    {
+        "id": "25",
+        "name": "Rectangular"
+    },
+    {
+        "id": "26",
+        "name": "Elliptical"
+    },
+    {
+        "id": "27",
+        "name": "Flanged"
+    },
+    {
+        "id": "28",
+        "name": "Ball"
+    },
+    {
+        "id": "29",
+        "name": "Butterfly"
+    },
+    {
+        "id": "30",
+        "name": "Globe"
+    },
+    {
+        "id": "31",
+        "name": "Gate"
+    },
+    {
+        "id": "32",
+        "name": "Other"
+    }
+]

@@ -19,7 +19,7 @@ class DGController extends GetxController {
   }
 
   Future<void> _init() async {
-    final jsonString = await getJson();
+    final jsonString = await getDummyDataJson();
     dummyData.value = dummyDataModelFromJson(jsonString);
     dataColumn = [
       'SIRA NO',
@@ -47,7 +47,6 @@ class DGController extends GetxController {
     isLoading.value = false;
   }
 
-  Future<String> getJson() {
-    return rootBundle.loadString('assets/jsons/dummy_data.json');
-  }
+  Future<String> getDummyDataJson() =>
+      rootBundle.loadString('assets/jsons/dummy-data.json');
 }

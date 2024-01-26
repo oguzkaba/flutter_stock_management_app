@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1",
+        "name": "NA"
+    },
+    {
+        "id": "2",
+        "name": "Concentric"
+    },
+    {
+        "id": "3",
+        "name": "Eccentric"
+    },
+    {
+        "id": "4",
+        "name": "Long Radius"
+    },
+    {
+        "id": "5",
+        "name": "Short Radius"
+    },
+    {
+        "id": "6",
+        "name": "2D"
+    },
+    {
+        "id": "7",
+        "name": "3D"
+    },
+    {
+        "id": "8",
+        "name": "5D"
+    },
+    {
+        "id": "9",
+        "name": "Bend"
+    },
+    {
+        "id": "10",
+        "name": "Other"
+    },
+    {
+        "id": "11",
+        "name": "Half"
+    }
+]
