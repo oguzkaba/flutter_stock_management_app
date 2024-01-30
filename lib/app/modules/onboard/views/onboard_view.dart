@@ -8,8 +8,8 @@ import 'package:flutter_stock_management_app/app/modules/home/views/home_view.da
 import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/views/widgets/drawer_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/views/widgets/navrail_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_iconbutton.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_icon_button_widget.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield_widget.dart';
 import 'package:get/get.dart';
 
 /// The `class OnboardView extends GetView<OnboardController>` is defining a Flutter widget called

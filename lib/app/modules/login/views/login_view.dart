@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:flutter_stock_management_app/app/modules/login/controllers/login_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield_widget.dart';
 import 'package:flutter_stock_management_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 

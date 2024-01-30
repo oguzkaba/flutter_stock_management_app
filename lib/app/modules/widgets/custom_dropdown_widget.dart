@@ -11,22 +11,25 @@ class CustomDropDownWidget extends StatelessWidget {
     required this.enabled,
     required this.dropDownId,
     required this.onSelect,
+    this.textController,
     super.key,
     this.width,
     this.initialSelect,
+    this.errorText,
   });
   final int? initialSelect;
   final bool enabled;
   final String labelText;
+  final String? errorText;
   final int dropDownId;
   final double? width;
   final List<String> items;
+  final TextEditingController? textController;
   final int? Function(int?)? onSelect;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<AddMaterialController>();
-    final textController = TextEditingController();
     return Padding(
       padding: const EdgeInsets.all(8),
       child: DropdownMenu(
@@ -35,29 +38,18 @@ class CustomDropDownWidget extends StatelessWidget {
                 ? initialSelect
                 : null,
         key: key,
-
         controller: textController,
         textStyle: Theme.of(context).textTheme.bodySmall,
         menuHeight: Get.height * 0.6,
         enabled: enabled,
-        errorText:
-            key == const ValueKey('1') ? controller.errorText.value : null,
+        errorText: errorText,
         hintText: 'Select...',
-
         label: Text(
           labelText,
           style: Theme.of(context).textTheme.bodySmall,
         ),
         width: width ?? 200,
         onSelected: onSelect,
-
-        // onSelected: (value) {
-        //   if (value == null) {
-        //     controller.disableDropDown(dropDownId.toString());
-        //   } else {
-        //     controller.enableDropDown(['2', '3', '4', '5', '6']);
-        //   }
-        // },
         dropdownMenuEntries: items
             .map((e) => DropdownMenuEntry(value: items.indexOf(e), label: e))
             .toList(),

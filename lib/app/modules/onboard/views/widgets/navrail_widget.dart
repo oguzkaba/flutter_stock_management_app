@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_exit_button.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_exit_button_widget.dart';
 import 'package:get/get.dart';
 
 /// The code is defining a class called `NavigationRailWidget` that extends the `StatelessWidget` class.

@@ -1,10 +1,12 @@
 // ignore_for_file: public_member_api_docs
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stock_management_app/app/core/models/material_type_model.dart';
 import 'package:get/get.dart';
 
 class AddMaterialController extends GetxController {
+  /// Variables
   final _materialTypeList = <MaterialTypeModel>[].obs;
   final _isMaterialTypeLoading = true.obs;
   final _isEnabledMap = <String, bool>{
@@ -18,13 +20,17 @@ class AddMaterialController extends GetxController {
   }.obs;
   final _errorText = Rxn<String>();
   final _selectTruck = Rxn<int>();
+  final textController = TextEditingController().obs;
+  final selectDate = Rxn<String>();
 
+  /// Getters
   List<MaterialTypeModel> get materialTypeList => _materialTypeList;
   bool get isMaterialTypeLoading => _isMaterialTypeLoading.value;
   Map<String, bool> get isEnabledMap => _isEnabledMap;
   Rxn<String> get errorText => _errorText;
   Rxn<int> get selectTruck => _selectTruck;
 
+  ///Init method
   @override
   Future<void> onInit() async {
     _isMaterialTypeLoading.value = true;
@@ -52,6 +58,4 @@ class AddMaterialController extends GetxController {
     }
     _isEnabledMap[id] = false;
   }
-
-  void disableActionButton() {}
 }
