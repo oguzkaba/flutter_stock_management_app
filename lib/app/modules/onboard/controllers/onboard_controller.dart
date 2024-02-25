@@ -1,18 +1,23 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/core/models/supabase_models/project_model.dart';
+import 'package:flutter_stock_management_app/app/core/services/supabase_service.dart';
+import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
 import 'package:get/get.dart';
 
-/// The `class OnboardController` is a class that extends the `GetxController` class. This means that
-/// `OnboardController` is a controller class that can be used with the GetX package in Flutter.
-/// Controllers are used to manage the state and logic of a specific part of the application. In this
-/// case, the `OnboardController` is responsible for managing the state and logic related to the
-/// onboarding process.
 class OnboardController extends GetxController {
-  //TODO: PAGE INDEX CHANGE 1 TO 0
-  final _pageIndex = 1.obs;
+  final _addMaterialController = Get.put(AddMaterialController());
+  final _pageIndex = 0.obs;
+  final selectedPrjIndex = 0.obs;
+  final _projectList = <ProjectModel>[].obs;
+  final _selectedProject = Rxn<ProjectModel>();
 
-  ///
+  /// Getters and Setters
   int get pageIndex => _pageIndex.value;
   set pageIndex(int value) => _pageIndex.value = value;
+  RxList<ProjectModel> get projectList => _projectList;
+  Rxn<ProjectModel> get selectedProject => _selectedProject;
 
   ///
   final focus = FocusNode();
@@ -21,9 +26,28 @@ class OnboardController extends GetxController {
   final serchBoxFocus = false.obs;
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
+    await getDBList('project');
     focus.addListener(onFocusChange);
     super.onInit();
+  }
+
+  Future<void> getDBList(String table) async {
+    await SupabaseService.instance.fetchData(table: table).then((value) {
+      projectList.value = projectModelFromJson(value);
+      _addMaterialController.reportTableRealTime(projectList[0].id!);
+      _selectedProject.value = projectList[0];
+    });
+  }
+
+  void selectProject(int index) {
+    if (selectedPrjIndex.value != index) {
+      selectedPrjIndex.value = index;
+      selectedProject.value = projectList[index];
+      _addMaterialController
+        ..closeReportList()
+        ..reportTableRealTime(projectList[index].id!);
+    }
   }
 
   @override

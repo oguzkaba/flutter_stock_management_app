@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
+import 'package:flutter_stock_management_app/app/core/services/supabase_service.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_dialog_widget.dart';
 import 'package:flutter_stock_management_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +23,18 @@ final class CustomExitButton extends StatelessWidget {
         elevation: 0,
         backgroundColor: ColorConstants.myDarkRed,
       ),
-      onPressed: () => Get.offAllNamed<dynamic>(Routes.LOGIN),
+      onPressed: () {
+        CustomDialogWidget.show(
+          dialogName: 'ExitDialog',
+          title: 'Exit',
+          child: const Text('Are you sure you want to exit?'),
+          onOk: () {
+            SupabaseService.instance.signOut();
+            Get.offAllNamed<dynamic>(Routes.LOGIN);
+          },
+          onCancel: Get.back<bool>,
+        );
+      },
       icon: Icon(
         Icons.exit_to_app_rounded,
         size: 16,

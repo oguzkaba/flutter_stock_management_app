@@ -8,6 +8,7 @@ import 'package:flutter_stock_management_app/app/modules/home/views/home_view.da
 import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/views/widgets/drawer_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/views/widgets/navrail_widget.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_dropdownbutton_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_icon_button_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield_widget.dart';
 import 'package:get/get.dart';
@@ -44,7 +45,39 @@ class OnboardView extends GetView<OnboardController> {
                         AppConstants.navLabelList[controller.pageIndex],
                       ),
                       const Spacer(),
-                      _buildSearchBox(),
+                      Container(
+                        padding: AppConstants.edgeInsetsHorizontalSmall,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            width: 2,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Project: ',
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                            AppConstants.horizontalPaddingSmall,
+                            CustomDropdownButtonWidget(
+                              items: controller.projectList
+                                  .map((e) => e.prjName)
+                                  .toList(),
+                              enabled: controller.projectList
+                                  .map((e) => e.isActive)
+                                  .toList(),
+                              onSelect: (p0) =>
+                                  controller.selectProject(p0 ?? 0),
+                              value: controller.selectedPrjIndex.value,
+                            ),
+                          ],
+                        ),
+                      ),
+                      AppConstants.horizontalPaddingSmall,
+                      _buildSearchBox(context),
                     ],
                   ),
                   actions: _buildAppBarActions(context),
@@ -71,7 +104,7 @@ class OnboardView extends GetView<OnboardController> {
           iconData: Get.isDarkMode
               ? Icons.light_mode_rounded
               : Icons.dark_mode_rounded,
-          onTap: () => ThemeController().changeThemeMode(),
+          onTap: () => Get.find<ThemeController>().changeThemeMode(),
         ),
         AppConstants.horizontalPaddingSmall,
         CircleAvatar(
@@ -92,16 +125,19 @@ class OnboardView extends GetView<OnboardController> {
         AppConstants.horizontalPaddingSmall,
       ];
 
-  SizedBox _buildSearchBox() {
-    return SizedBox(
-      width: controller.serchBoxFocus.value ? Get.width - 450 : 200,
-      child: CustomTextField(
-        focusNode: controller.focus,
-        onSubmitted: (value) => debugPrint('Search Enter Key'),
-        fillColor: ColorConstants.myLightGrey,
-        hintText: 'Search here...',
-        prefixIconData: Icons.search,
-      ),
-    );
+  Widget _buildSearchBox(BuildContext context) {
+    return Responsive.isDesktop(context)
+        ? SizedBox(
+            width: controller.serchBoxFocus.value ? 400 : 200,
+            child: CustomTextField(
+              focusNode: controller.focus,
+              onSubmitted: (value) => debugPrint('Search Enter Key'),
+              fillColor: ColorConstants.myLightGrey,
+              hintText: 'Search here...',
+              prefixIconData: Icons.search,
+            ),
+          )
+        : CustomIconButton(iconData: Icons.search_rounded, onTap: () {});
+    //TODO: Add mobile search functionality
   }
 }

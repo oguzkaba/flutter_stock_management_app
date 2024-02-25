@@ -7,15 +7,22 @@ environment:
   sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
+  collection: ^1.18.0
   cupertino_icons: ^1.0.6
   device_preview: ^1.1.0
-  excel: ^4.0.0
+  excel: ^4.0.2
+  flutter_dotenv: ^5.1.0
+  file_picker: ^6.1.1
   flutter:
     sdk: flutter
   get: 4.6.6
   get_storage: ^2.1.1
-  syncfusion_flutter_core: ^23.2.7
-  syncfusion_flutter_datagrid: ^23.2.7
+  intl: ^0.18.1
+  mask_text_input_formatter: ^2.8.0
+  supabase_flutter: ^2.3.2
+  syncfusion_flutter_core: ^24.2.6
+  syncfusion_flutter_datagrid: ^24.2.6
+  syncfusion_flutter_datagrid_export: ^24.2.6
   window_manager: ^0.3.7
 
 dev_dependencies:
@@ -33,6 +40,7 @@ flutter:
     #- assets/lotties/
     - assets/jsons/
     - assets/kitap.xlsx
+    - .env
 
   fonts:
     - family: Montserrat

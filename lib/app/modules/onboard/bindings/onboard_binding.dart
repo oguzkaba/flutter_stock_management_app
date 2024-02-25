@@ -11,20 +11,20 @@ class OnboardBinding extends Bindings {
   @override
   void dependencies() {
     Get
-      ..lazyPut<OnboardController>(
-        OnboardController.new,
-      )
-      ..lazyPut<ThemeController>(
-        ThemeController.new,
-      )
-      ..lazyPut<HomeController>(
-        HomeController.new,
-      )
-      ..put<WindowController>(
-        WindowController(),
+      ..put<OnboardController>(
+        OnboardController(),
       )
       ..put<AddMaterialController>(
         AddMaterialController(),
+      )
+      ..put<ThemeController>(
+        ThemeController(),
+      )
+      ..put<HomeController>(
+        HomeController(),
+      )
+      ..put<WindowController>(
+        WindowController(),
       );
   }
 }

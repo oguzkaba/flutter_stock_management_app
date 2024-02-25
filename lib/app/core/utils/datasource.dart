@@ -1,89 +1,91 @@
-// ignore_for_file: sort_constructors_first, public_member_api_docs
+// ignore_for_file: sort_constructors_first, public_member_api_docs, avoid_dynamic_calls
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/controllers/datagrid_controller.dart';
+import 'package:flutter_stock_management_app/app/core/models/supabase_models/material_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class GridDataSource extends DataGridSource {
+  TextEditingController editingController = TextEditingController();
+  dynamic newCellValue;
   List<DataGridRow> _employeeData = [];
 
   /// Creates the employee data source class with required details.
-  GridDataSource(DGController controller) {
-    _employeeData = controller.dummyData
+  GridDataSource(List<MaterialsModel> data, List<String> dataColumn) {
+    _employeeData = data
         .map(
-          (rows) => DataGridRow(
+          (MaterialsModel rows) => DataGridRow(
             cells: [
               DataGridCell(
-                columnName: controller.dataColumn[0],
-                value: rows.siraNo,
+                columnName: dataColumn[0],
+                value: rows.seqNo ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[1],
-                value: rows.aracNo,
+                columnName: dataColumn[1],
+                value: rows.truckNo ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[2],
-                value: rows.malzemeninCinsi,
+                columnName: dataColumn[2],
+                value: rows.matType ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[3],
-                value: rows.urunTanimi,
+                columnName: dataColumn[3],
+                value: rows.description ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[4],
-                value: rows.rafNo,
+                columnName: dataColumn[4],
+                value: rows.shelfNo ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[5],
-                value: rows.dn,
+                columnName: dataColumn[5],
+                value: rows.diameter ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[6],
-                value: rows.itemNo,
+                columnName: dataColumn[6],
+                value: rows.itemNo ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[7],
-                value: rows.heatNo,
+                columnName: dataColumn[7],
+                value: rows.heatNo ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[8],
-                value: rows.adet,
+                columnName: dataColumn[8],
+                value: rows.quantity ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[9],
-                value: rows.gelenAdet,
+                columnName: dataColumn[9],
+                value: rows.inQty ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[10],
-                value: rows.iadeAdet,
+                columnName: dataColumn[10],
+                value: rows.retQty ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[11],
-                value: rows.kalanAdet,
+                columnName: dataColumn[11],
+                value: rows.remQty ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[12],
-                value: rows.kalite,
+                columnName: dataColumn[12],
+                value: rows.quality ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[13],
-                value: rows.gelisTarihi,
+                columnName: dataColumn[13],
+                value: rows.arrivalDate ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[14],
-                value: rows.gelenFirma,
+                columnName: dataColumn[14],
+                value: rows.inCompany ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[15],
-                value: rows.shipmentNumber,
+                columnName: dataColumn[15],
+                value: rows.shippNo ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[16],
-                value: rows.sandikNo,
+                columnName: dataColumn[16],
+                value: rows.boxNo ?? '',
               ),
               DataGridCell(
-                columnName: controller.dataColumn[17],
-                value: rows.not,
+                columnName: dataColumn[17],
+                value: rows.note ?? '',
               ),
             ],
           ),
@@ -110,4 +112,94 @@ class GridDataSource extends DataGridSource {
       }).toList(),
     );
   }
+
+  //TODO: Implement the following methods to enable editing
+
+  // @override
+  // Widget? buildEditWidget(
+  //   DataGridRow dataGridRow,
+  //   RowColumnIndex rowColumnIndex,
+  //   GridColumn column,
+  //   void Function() submitCell,
+  // ) {
+  //   // To set the value for TextField when cell is moved into edit mode.
+  //   final displayText = dataGridRow
+  //           .getCells()
+  //           .firstWhere(
+  //             (DataGridCell dataGridCell) =>
+  //                 dataGridCell.columnName == column.columnName,
+  //           )
+  //           .value
+  //           ?.toString() ??
+  //       '';
+
+  //   /// Returning the TextField with the numeric keyboard configuration.
+  //   if (column.columnName == 'ARAÇ NO') {
+  //     return Container(
+  //       padding: const EdgeInsets.all(8),
+  //       alignment: Alignment.centerRight,
+  //       child: TextField(
+  //         autofocus: true,
+  //         controller: editingController..text = displayText,
+  //         textAlign: TextAlign.right,
+  //         decoration: const InputDecoration(
+  //           contentPadding: EdgeInsets.zero,
+  //           border: InputBorder.none,
+  //           isDense: true,
+  //         ),
+  //         inputFormatters: [
+  //           FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+  //         ],
+  //         keyboardType: TextInputType.number,
+  //         onChanged: (String value) {
+  //           if (value.isNotEmpty) {
+  //             newCellValue = int.parse(value);
+  //           } else {
+  //             newCellValue = null;
+  //           }
+  //         },
+  //         onSubmitted: (String value) {
+  //           /// Call [CellSubmit] callback to fire the canSubmitCell and
+  //           /// onCellSubmit to commit the new value in single place.
+  //           submitCell();
+  //         },
+  //       ),
+  //     );
+  //   }
+  //   return null;
+  // }
+
+  // @override
+  // Future<void> onCellSubmit(
+  //   DataGridRow dataGridRow,
+  //   RowColumnIndex rowColumnIndex,
+  //   GridColumn column,
+  // ) async {
+  //   final dynamic oldValue = dataGridRow
+  //           .getCells()
+  //           .firstWhereOrNull(
+  //             (DataGridCell dataGridCell) =>
+  //                 dataGridCell.columnName == column.columnName,
+  //           )
+  //           ?.value ??
+  //       '';
+
+  //   final dataRowIndex = rows.indexOf(dataGridRow);
+
+  //   if (newCellValue == null || oldValue == newCellValue) {
+  //     return;
+  //   }
+
+  //   if (column.columnName == 'ARAÇ NO') {
+  //     rows[dataRowIndex].getCells()[rowColumnIndex.columnIndex] =
+  //         DataGridCell<int>(columnName: 'ARAÇ NO', value: newCellValue as int?);
+
+  //     // Save the new cell value to model collection also.
+  //     //_employeeData[dataRowIndex].id = newCellValue as int;
+  //   }
+
+  //   // To reset the new cell value after successfully updated to DataGridRow
+  //   //and underlying mode.
+  //   newCellValue = null;
+  // }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_dialog_widget.dart';
 import 'package:get/get.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -23,24 +24,16 @@ class WindowController extends GetxController with WindowListener {
   Future<void> onWindowClose() async {
     final isPreventClose = await windowManager.isPreventClose();
     if (isPreventClose && !Get.isDialogOpen!) {
-      await Get.defaultDialog<Widget>(
-        title: 'Are you sure you want to close this window?',
-        titleStyle: Theme.of(Get.context!).textTheme.titleLarge,
-        titlePadding: const EdgeInsets.all(24),
-        middleText: '',
-        actions: [
-          TextButton(
-            onPressed: Get.back<dynamic>,
-            child: const Text('No'),
-          ),
-          TextButton(
-            child: const Text('Yes'),
-            onPressed: () async {
-              Get.back<dynamic>();
-              await windowManager.destroy();
-            },
-          ),
-        ],
+      await CustomDialogWidget.show(
+        dialogName: 'ExitAppDialog',
+        title: 'Exit the application !',
+        child: const Text(
+          'All unsaved data will be lost. Do you want to continue?',
+        ),
+        onCancel: () => Get.back<bool>(),
+        onOk: () async {
+          await windowManager.destroy();
+        },
       );
     }
   }

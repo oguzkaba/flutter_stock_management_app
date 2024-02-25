@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
+import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:get/get.dart';
 
-class CustomDropDownWidget extends StatelessWidget {
-  const CustomDropDownWidget({
+class CustomDropdownMenuWidget extends StatelessWidget {
+  const CustomDropdownMenuWidget({
     required this.labelText,
     required this.items,
     required this.enabled,
@@ -16,27 +16,25 @@ class CustomDropDownWidget extends StatelessWidget {
     this.width,
     this.initialSelect,
     this.errorText,
+    this.itemEnabled,
   });
   final int? initialSelect;
   final bool enabled;
+  final List<bool>? itemEnabled;
   final String labelText;
   final String? errorText;
   final int dropDownId;
   final double? width;
   final List<String> items;
   final TextEditingController? textController;
-  final int? Function(int?)? onSelect;
+  final ValueChanged<int?>? onSelect;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<AddMaterialController>();
     return Padding(
       padding: const EdgeInsets.all(8),
       child: DropdownMenu(
-        initialSelection:
-            controller.isEnabledMap[dropDownId.toString()] ?? false
-                ? initialSelect
-                : null,
+        initialSelection: initialSelect,
         key: key,
         controller: textController,
         textStyle: Theme.of(context).textTheme.bodySmall,
@@ -51,9 +49,34 @@ class CustomDropDownWidget extends StatelessWidget {
         width: width ?? 200,
         onSelected: onSelect,
         dropdownMenuEntries: items
-            .map((e) => DropdownMenuEntry(value: items.indexOf(e), label: e))
+            .map(
+              (e) => DropdownMenuEntry(
+                //enabled: _getItemIsEnabled(e),
+                label: _getItemIsEnabled(e) ? e : '$e (Passive)',
+                labelWidget: _getItemIsEnabled(e)
+                    ? Text(e)
+                    : Text(
+                        '$e (Passive)',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: _getItemIsEnabled(e)
+                                  ? null
+                                  : ColorConstants.myLightRed,
+                            ),
+                      ),
+                value: items.indexOf(e),
+              ),
+            )
             .toList(),
       ),
     );
+  }
+
+  bool _getItemIsEnabled(String e) {
+    if (itemEnabled != null) {
+      if (itemEnabled!.isNotEmpty) {
+        return itemEnabled![items.indexOf(e)];
+      }
+    }
+    return true;
   }
 }

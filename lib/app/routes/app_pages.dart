@@ -22,7 +22,7 @@ class AppPages {
   /// application. In this case, it is set to `Routes.LOGIN`,
   ///  which means that when the application
   /// starts, it will navigate to the login view.
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.ONBOARD;
 
   /// The `static final routes` is a list of `GetPage` objects
   /// that define the routes for the

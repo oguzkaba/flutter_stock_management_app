@@ -11,12 +11,15 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     required this.fillColor,
     required this.prefixIconData,
+    this.controller,
     super.key,
     this.focusNode,
     this.suffixIconData,
     this.onSubmitted,
     this.obsecureText,
     this.onPressed,
+    this.iconColor,
+    this.errorText,
   });
 
   /// These are the properties of the `CustomTextField` class.
@@ -38,28 +41,44 @@ class CustomTextField extends StatelessWidget {
   final bool? obsecureText;
 
   /// These are the properties of the `CustomTextField` class.
+  final Color? iconColor;
+
+  /// These are the properties of the `CustomTextField` class.
   final VoidCallback? onPressed;
 
   /// These are the properties of the `CustomTextField` class.
-  final void Function(String)? onSubmitted;
+  final ValueChanged<String>? onSubmitted;
+
+  /// These are the properties of the `CustomTextField` class.
+  final TextEditingController? controller;
+
+  /// These are the properties of the `CustomTextField` class.
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: errorText == null ? null : (value) => errorText,
+      controller: controller,
       textAlignVertical: TextAlignVertical.center,
       focusNode: focusNode,
-      onSubmitted: onSubmitted,
+      //onSubmitted: onSubmitted,
       obscureText: obsecureText ?? false,
       style:
           context.textTheme.bodySmall?.copyWith(color: ColorConstants.myDark),
       decoration: InputDecoration(
+        errorText: errorText,
         prefixIcon: Icon(
           prefixIconData,
           color: ColorConstants.myMediumGrey,
           size: 18,
         ),
-        suffixIcon:
-            CustomIconButton(iconData: suffixIconData, onTap: onPressed),
+        suffixIcon: CustomIconButton(
+          iconData: suffixIconData,
+          onTap: onPressed,
+          color: iconColor,
+        ),
         hintText: hintText,
         hintStyle: TextStyle(
           fontSize: 12,

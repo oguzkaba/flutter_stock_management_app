@@ -32,6 +32,27 @@ class AppConstants {
     Icons.help_rounded,
   ];
 
+  static List<String> materilDataGridColumn = [
+    'SIRA NO',
+    'ARAÇ NO',
+    'MALZEMENİN CİNSİ',
+    'ÜRÜN TANIMI',
+    'RAF NO',
+    'DN',
+    'ITEM NO',
+    'HEAT NO',
+    'ADET',
+    'GELEN ADET',
+    'İADE ADET',
+    'KALAN ADET',
+    'KALİTE',
+    'GELİŞ TARİHİ',
+    'GELEN FİRMA',
+    'SHIPMENT NUMBER',
+    'SANDIK NO',
+    'NOT',
+  ];
+
   //! Padding
   static final paddingSmall = Padding(padding: EdgeInsets.all(Get.width * .01));
   static final paddingMedium =
@@ -57,4 +78,32 @@ class AppConstants {
       Padding(padding: EdgeInsets.symmetric(vertical: Get.height * .03));
   static final verticalPaddingLarge =
       Padding(padding: EdgeInsets.symmetric(vertical: Get.height * .05));
+
+  //! EdgeInsets
+  static final edgeInsetsAllSmall = EdgeInsets.all(Get.width * .01);
+  static final edgeInsetsAllMedium = EdgeInsets.all(Get.width * .02);
+  static final edgeInsetsAllNormal = EdgeInsets.all(Get.width * .03);
+  static final edgeInsetsAllLarge = EdgeInsets.all(Get.width * .05);
+
+  static final edgeInsetsHorizontalSmall =
+      EdgeInsets.symmetric(horizontal: Get.width * .01);
+  static final edgeInsetsHorizontalMedium = EdgeInsets.symmetric(
+    horizontal: Get.width * .02,
+  );
+  static final edgeInsetsHorizontalNormal =
+      EdgeInsets.symmetric(horizontal: Get.width * .03);
+  static final edgeInsetsHorizontalLarge = EdgeInsets.symmetric(
+    horizontal: Get.width * .05,
+  );
+
+  static final edgeInsetsVerticalSmall =
+      EdgeInsets.symmetric(vertical: Get.height * .01);
+  static final edgeInsetsVerticalMedium = EdgeInsets.symmetric(
+    vertical: Get.height * .02,
+  );
+  static final edgeInsetsVerticalNormal =
+      EdgeInsets.symmetric(vertical: Get.height * .03);
+  static final edgeInsetsVerticalLarge = EdgeInsets.symmetric(
+    vertical: Get.height * .05,
+  );
 }
