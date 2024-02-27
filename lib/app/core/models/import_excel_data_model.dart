@@ -36,13 +36,14 @@ class ImportDataModel {
     this.heatNo,
     this.adet,
     this.gelenAdet,
-    this.iadeAdet,
+    this.imalataVerilenAdet,
+    this.santiyeSevkAdet,
     this.kalanAdet,
-    this.kalite,
     this.gelisTarihi,
     this.gelenFirma,
     this.shipmentNumber,
     this.sandikNo,
+    this.karantina,
     this.not,
   });
 
@@ -62,13 +63,15 @@ class ImportDataModel {
         gelenAdet: json['GELEN ADET'] == null
             ? null
             : int.parse(json['GELEN ADET'].toString()),
-        iadeAdet: json['İADE ADET'] == null
+        imalataVerilenAdet: json['İMALATA VERİLEN ADET'] == null
             ? null
             : int.parse(json['İADE ADET'].toString()),
+        santiyeSevkAdet: json['SANTİYE SEVK ADET'] == null
+            ? null
+            : int.parse(json['SANTİYE SEVK ADET'].toString()),
         kalanAdet: json['KALAN ADET'] == null
             ? null
             : int.parse(json['KALAN ADET'].toString()),
-        kalite: json['KALİTE']?.toString(),
         gelisTarihi: json['GELİŞ TARİHİ'] == null
             ? null
             : Utils.dateFormatDDMMYYYY(
@@ -77,7 +80,10 @@ class ImportDataModel {
         gelenFirma: json['GELEN FİRMA']?.toString(),
         shipmentNumber: json['SHIPMENT NUMBER']?.toString(),
         sandikNo: json['SANDIK NO']?.toString(),
-        not: json['NOT']?.toString(),
+        karantina: json['KARANTİNA'] == null
+            ? null
+            : int.parse(json['SANTİYE SEVK ADET'].toString()),
+        not: json['AÇIKLAMA']?.toString(),
       );
   final int? siraNo;
   final String? aracNo;
@@ -89,13 +95,14 @@ class ImportDataModel {
   final String? heatNo;
   final int? adet;
   final int? gelenAdet;
-  final int? iadeAdet;
+  final int? imalataVerilenAdet;
+  final int? santiyeSevkAdet;
   final int? kalanAdet;
-  final String? kalite;
   final String? gelisTarihi;
   final String? gelenFirma;
   final String? shipmentNumber;
   final String? sandikNo;
+  final int? karantina;
   final String? not;
 
   List<MaterialsModel> toMaterialsModel() => [
@@ -108,15 +115,16 @@ class ImportDataModel {
           diameter: dn,
           itemNo: itemNo,
           heatNo: heatNo,
-          quantity: adet,
+          recQty: adet,
           inQty: gelenAdet,
-          retQty: iadeAdet,
+          manQty: imalataVerilenAdet,
+          consQty: santiyeSevkAdet,
           remQty: kalanAdet,
-          quality: kalite,
           arrivalDate: gelisTarihi,
           inCompany: gelenFirma,
           shippNo: shipmentNumber,
           boxNo: sandikNo,
+          quarantine: karantina,
           note: not,
         ),
       ];
@@ -130,15 +138,16 @@ class ImportDataModel {
         'DN': dn,
         'ITEM NO': itemNo,
         'HEAT NO': heatNo,
-        'ADET': adet,
+        'İRSALİYE ADET': adet,
         'GELEN ADET': gelenAdet,
-        'IADE ADET': iadeAdet,
+        'İMALATA VERİLEN ADET': imalataVerilenAdet,
+        'SANTİYE SEVK ADET': santiyeSevkAdet,
         'KALAN ADET': kalanAdet,
-        'KALITE': kalite,
         'GELIS TARIHI': gelisTarihi,
         'GELEN FIRMA': gelenFirma,
         'SHIPMENT NUMBER': shipmentNumber,
         'SANDIK NO': sandikNo,
+        'KARANTİNA': karantina,
         'NOT': not,
       };
 }

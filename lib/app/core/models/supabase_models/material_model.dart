@@ -26,15 +26,16 @@ class MaterialsModel {
     this.diameter,
     this.itemNo,
     this.heatNo,
-    this.quantity,
+    this.recQty,
     this.inQty,
-    this.retQty,
+    this.manQty,
+    this.consQty,
     this.remQty,
-    this.quality,
     this.arrivalDate,
     this.inCompany,
     this.shippNo,
     this.boxNo,
+    this.quarantine,
     this.note,
     this.createdBy,
     this.isActive,
@@ -53,17 +54,18 @@ class MaterialsModel {
         diameter: json['diameter'] as String?,
         itemNo: json['item_no'] as String?,
         heatNo: json['heat_no'] as String?,
-        quantity: json['quantity'] as int?,
+        recQty: json['rec_qty'] as int?,
         inQty: json['in_qty'] as int?,
-        retQty: json['ret_qty'] as int?,
+        manQty: json['man_qty'] as int?,
+        consQty: json['cons_qty'] as int?,
         remQty: json['rem_qty'] as int?,
-        quality: json['quality'] as String?,
         arrivalDate: json['arrival_date'] as String?,
         inCompany: json['in_company'] as String?,
         shippNo: json['shipp_no'] as String?,
         boxNo: json['box_no'] as String?,
         note: json['note'] as String?,
         createdBy: json['created_by'] as String?,
+        quarantine: json['quarantine'] as int?,
         isActive: json['is_active'] as bool?,
       );
   final int? id;
@@ -76,15 +78,16 @@ class MaterialsModel {
   final String? diameter;
   final String? itemNo;
   final String? heatNo;
-  final int? quantity;
+  final int? recQty;
   final int? inQty;
-  final int? retQty;
+  final int? manQty;
+  final int? consQty;
   final int? remQty;
-  final String? quality;
   final String? arrivalDate;
   final String? inCompany;
   final String? shippNo;
   final String? boxNo;
+  final int? quarantine;
   final String? note;
   final String? createdBy;
   final bool? isActive;
@@ -100,15 +103,16 @@ class MaterialsModel {
         'diameter': diameter,
         'item_no': itemNo,
         'heat_no': heatNo,
-        'quantity': quantity,
+        'rec_qty': recQty,
         'in_qty': inQty,
-        'ret_qty': retQty,
+        'man_qty': manQty,
+        'cons_qty': consQty,
         'rem_qty': remQty,
-        'quality': quality,
         'arrival_date': arrivalDate,
         'in_company': inCompany,
         'shipp_no': shippNo,
         'box_no': boxNo,
+        'quarantine': quarantine,
         'note': note,
         'created_by': createdBy,
         'is_active': isActive,

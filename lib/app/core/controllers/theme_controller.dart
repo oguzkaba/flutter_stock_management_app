@@ -9,6 +9,8 @@ import 'package:get_storage/get_storage.dart';
 /// This allows the controller to manage the state and
 /// logic related to the theme of the application.
 class ThemeController extends GetxController {
+  static ThemeController get instance => Get.find<ThemeController>();
+
   final _getStorage = GetStorage();
   final storageKey = 'isDarkmode';
 

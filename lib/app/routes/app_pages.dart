@@ -7,6 +7,8 @@ import 'package:flutter_stock_management_app/app/modules/login/bindings/login_bi
 import 'package:flutter_stock_management_app/app/modules/login/views/login_view.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/bindings/onboard_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/onboard/views/onboard_view.dart';
+import 'package:flutter_stock_management_app/app/modules/splash/bindings/splash_binding.dart';
+import 'package:flutter_stock_management_app/app/modules/splash/views/splash_view.dart';
 import 'package:get/get.dart';
 
 // ignore_for_file: constant_identifier_names
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.ADD_MATERIAL,
       page: () => const AddMaterialView(),
       binding: AddMaterialBinding(),
+    ),
+    GetPage<Widget>(
+      name: _Paths.SPLASH,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }

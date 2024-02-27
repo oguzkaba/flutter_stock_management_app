@@ -49,7 +49,7 @@ class GridDataSource extends DataGridSource {
               ),
               DataGridCell(
                 columnName: dataColumn[8],
-                value: rows.quantity ?? '',
+                value: rows.recQty ?? '',
               ),
               DataGridCell(
                 columnName: dataColumn[9],
@@ -57,15 +57,15 @@ class GridDataSource extends DataGridSource {
               ),
               DataGridCell(
                 columnName: dataColumn[10],
-                value: rows.retQty ?? '',
+                value: rows.manQty ?? '',
               ),
               DataGridCell(
                 columnName: dataColumn[11],
-                value: rows.remQty ?? '',
+                value: rows.consQty ?? '',
               ),
               DataGridCell(
                 columnName: dataColumn[12],
-                value: rows.quality ?? '',
+                value: rows.remQty ?? '',
               ),
               DataGridCell(
                 columnName: dataColumn[13],
@@ -85,6 +85,10 @@ class GridDataSource extends DataGridSource {
               ),
               DataGridCell(
                 columnName: dataColumn[17],
+                value: rows.quarantine ?? '',
+              ),
+              DataGridCell(
+                columnName: dataColumn[18],
                 value: rows.note ?? '',
               ),
             ],

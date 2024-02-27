@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_stock_management_app/app/core/models/supabase_models/material_model.dart';
 import 'package:flutter_stock_management_app/app/core/services/supabase_service.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_snackbar_widget.dart';
@@ -24,16 +25,20 @@ class HomeController extends GetxController {
 
   /// This function is likely intended to display a real-time materials table.
   void materialsTableReaTime() {
-    isLoading.value = true;
     _supabaseService.subscribeToData(table: 'material').listen(
       (List<Map<String, dynamic>> data) {
-        _allMaterialList.value = materialsModelFromJson(data);
-        isLoading.value = false;
-
-        CustomSnackbarWidget.show(
-          'Info',
-          'Refreshing the "material" list...',
-        );
+        final convertData = materialsModelFromJson(data);
+        if (!listEquals(_allMaterialList, convertData)) {
+          isLoading.value = true;
+          _allMaterialList
+            ..clear()
+            ..value = convertData;
+          isLoading.value = false;
+          CustomSnackbarWidget.show(
+            'Info',
+            'Refreshing the "material" list...',
+          );
+        }
       },
       onDone: () {
         CustomSnackbarWidget.show(

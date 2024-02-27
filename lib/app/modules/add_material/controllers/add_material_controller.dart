@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
@@ -47,14 +48,19 @@ class AddMaterialController extends GetxController {
   void reportTableRealTime(int filterValue) {
     _supabaseService.subscribeToData(table: 'report').listen(
       (List<Map<String, dynamic>> data) {
-        CustomSnackbarWidget.show(
-          'Info',
-          'Refreshing the "report" list...',
-        );
-        _allReportList.value = reportModelFromJson(data);
-        _reportList.value = _allReportList
-            .where((element) => element.prjId == filterValue)
-            .toList();
+        final convertData = reportModelFromJson(data);
+        if (!listEquals(_allReportList, convertData)) {
+          _allReportList
+            ..clear()
+            ..value = convertData;
+          _reportList.value = _allReportList
+              .where((element) => element.prjId == filterValue)
+              .toList();
+          CustomSnackbarWidget.show(
+            'Info',
+            'Refreshing the "report" list...',
+          );
+        }
       },
       onDone: () {
         CustomSnackbarWidget.show(
@@ -107,7 +113,7 @@ class AddMaterialController extends GetxController {
     final data = await ExcelToJson.convertToJSON();
     if (data?.first.siraNo != null) {
       await CustomSnackbarWidget.show(
-        'Data imported successfully!',
+        'Success',
         'Data imported successfully!',
       );
       isLoading = false;

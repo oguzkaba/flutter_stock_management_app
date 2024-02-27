@@ -62,12 +62,13 @@ class ExcelToJson {
 
   static Future<Excel?> _getFile() async {
     final file = await FilePicker.platform.pickFiles(
-      withData: true,
+      onFileLoading: print,
+      //withData: true,
       type: FileType.custom,
       allowedExtensions: ['xlsx'],
     );
     if (file != null && file.files.isNotEmpty) {
-      final bytes = file.files.first.bytes!;
+      final bytes = file.files.single.bytes!;
 
       return Excel.decodeBytes(bytes);
     } else {
