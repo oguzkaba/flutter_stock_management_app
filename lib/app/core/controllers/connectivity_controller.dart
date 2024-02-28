@@ -6,33 +6,45 @@ import 'package:flutter_stock_management_app/app/modules/widgets/custom_dialog_w
 import 'package:get/get.dart';
 
 class ConnectivityController extends GetxController {
+  static ConnectivityController get to => Get.find<ConnectivityController>();
   final isConnected = false.obs;
 
   @override
   Future<void> onInit() async {
+    await Connectivity().checkConnectivity().then((result) {
+      isInternetConnected(result);
+      Connectivity().onConnectivityChanged.listen(isInternetConnected);
+    });
+
     super.onInit();
-    final result = await Connectivity().checkConnectivity();
-    isInternetConnected(result);
-    Connectivity().onConnectivityChanged.listen(isInternetConnected);
   }
 
   bool isInternetConnected(ConnectivityResult? result) {
     if (result == ConnectivityResult.none) {
+      _connectivityActions(false);
+      return false;
+    } else if (result == ConnectivityResult.mobile ||
+        result == ConnectivityResult.wifi) {
+      _connectivityActions(true);
+      return true;
+    }
+    _connectivityActions(false);
+    return false;
+  }
+
+  void _connectivityActions(bool isInternetConnected) {
+    if (isInternetConnected) {
+      if (Get.isDialogOpen ?? false) Get.back<bool>();
+      isConnected.value = isInternetConnected;
+    } else {
       CustomDialogWidget.show(
         dialogName: 'No Internet Connection',
         title: 'No Internet Connection',
         child: const Text('Please check your internet connection.'),
+        isConnected: false,
       );
-      isConnected.value = false;
-      return false;
-    } else if (result == ConnectivityResult.mobile ||
-        result == ConnectivityResult.wifi) {
-      if (Get.isDialogOpen ?? false) Get.back<bool>();
-      isConnected.value = true;
-      return true;
+      isConnected.value = isInternetConnected;
     }
-
-    return false;
   }
 
   @override

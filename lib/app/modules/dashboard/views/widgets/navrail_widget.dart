@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
-import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_exit_button_widget.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +14,7 @@ final class NavigationRailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(OnboardController());
+    final controller = Get.put(DashboardController());
 
     return Obx(
       () => NavigationRail(

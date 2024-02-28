@@ -5,21 +5,18 @@ import 'package:flutter_stock_management_app/app/core/controllers/theme_controll
 import 'package:flutter_stock_management_app/app/core/utils/responsive.dart';
 import 'package:flutter_stock_management_app/app/modules/add_material/views/add_material_view.dart';
 import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
-import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/onboard/views/widgets/drawer_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/onboard/views/widgets/navrail_widget.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/views/widgets/drawer_widget.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/views/widgets/navrail_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_dropdownbutton_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_icon_button_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield_widget.dart';
 import 'package:get/get.dart';
 
-/// The `class OnboardView extends GetView<OnboardController>` is defining a Flutter widget called
-/// `OnboardView` that extends the `GetView` class from the GetX package. This means that `OnboardView`
-/// is a GetX view widget, which allows for easy integration of state management and dependency
-/// injection using the GetX library.
-class OnboardView extends GetView<OnboardController> {
+/// This Dart class represents a dashboard view that is associated with a specific controller.
+class DashboardView extends GetView<DashboardController> {
   ///
-  const OnboardView({super.key});
+  const DashboardView({super.key});
 
   @override
   Widget build(BuildContext context) {

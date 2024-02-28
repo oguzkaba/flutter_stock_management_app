@@ -6,7 +6,7 @@ import 'package:flutter_stock_management_app/app/core/models/supabase_models/rep
 import 'package:flutter_stock_management_app/app/core/services/supabase_service.dart';
 import 'package:flutter_stock_management_app/app/core/utils/utils.dart';
 import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_divider_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_entry_data_row_widget.dart';
 import 'package:get/get.dart';
@@ -113,7 +113,7 @@ class AddNewReportWidget extends StatelessWidget {
     AddMaterialController controller,
   ) {
     return CustomEntryDataRowWidget(
-      data: Get.find<OnboardController>().selectedProject.value?.prjName,
+      data: Get.find<DashboardController>().selectedProject.value?.prjName,
       dataName: 'Project : ',
       enabled: false,
     );

@@ -5,8 +5,8 @@ import 'package:flutter_stock_management_app/app/modules/home/bindings/home_bind
 import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
 import 'package:flutter_stock_management_app/app/modules/login/bindings/login_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/login/views/login_view.dart';
-import 'package:flutter_stock_management_app/app/modules/onboard/bindings/onboard_binding.dart';
-import 'package:flutter_stock_management_app/app/modules/onboard/views/onboard_view.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/bindings/dashboard_binding.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:flutter_stock_management_app/app/modules/splash/bindings/splash_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/splash/views/splash_view.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,7 @@ class AppPages {
   /// application. In this case, it is set to `Routes.LOGIN`,
   ///  which means that when the application
   /// starts, it will navigate to the login view.
-  static const INITIAL = Routes.ONBOARD;
+  static const INITIAL = Routes.SPLASH;
 
   /// The `static final routes` is a list of `GetPage` objects
   /// that define the routes for the
@@ -39,9 +39,9 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage<Widget>(
-      name: _Paths.ONBOARD,
-      page: OnboardView.new,
-      binding: OnboardBinding(),
+      name: _Paths.DASHBOARD,
+      page: DashboardView.new,
+      binding: DashboardBinding(),
     ),
     GetPage<Widget>(
       name: _Paths.LOGIN,

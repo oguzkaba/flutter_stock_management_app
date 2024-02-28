@@ -8,23 +8,29 @@ class CustomDialogWidget {
     required Widget child,
     String? dialogName,
     String? title,
+    bool? isConnected = true,
     VoidCallback? onOk,
     VoidCallback? onCancel,
   }) async {
     await Get.dialog<Widget>(
-      AlertDialog(
-        title: Text(title ?? 'Alert Dialog'),
-        content: child,
-        actions: [
-          TextButton(
-            onPressed: onCancel,
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: onOk,
-            child: const Text('OK'),
-          ),
-        ],
+      PopScope(
+        canPop: false,
+        child: AlertDialog(
+          title: Text(title ?? 'Alert Dialog'),
+          content: child,
+          actions: isConnected ?? true
+              ? [
+                  TextButton(
+                    onPressed: onCancel,
+                    child: const Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: onOk,
+                    child: const Text('OK'),
+                  ),
+                ]
+              : null,
+        ),
       ),
       barrierDismissible: false,
       name: dialogName,

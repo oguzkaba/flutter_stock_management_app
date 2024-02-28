@@ -1,18 +1,18 @@
 import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:flutter_stock_management_app/app/core/controllers/window_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/home/controllers/home_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/onboard/controllers/onboard_controller.dart';
 import 'package:get/get.dart';
 
 /// The `class OnboardBinding extends Bindings` is creating a binding class for the `Onboard` module in
 /// the Flutter Stock Management App.
-class OnboardBinding extends Bindings {
+class DashboardBinding extends Bindings {
   @override
   void dependencies() {
     Get
-      ..put<OnboardController>(
-        OnboardController(),
+      ..put<DashboardController>(
+        DashboardController(),
       )
       ..put<AddMaterialController>(
         AddMaterialController(),

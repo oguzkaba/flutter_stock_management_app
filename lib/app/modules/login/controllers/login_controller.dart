@@ -53,7 +53,7 @@ class LoginController extends GetxController {
           .signinWithEmail(email: email, password: password)
           .then((value) {
         value.user != null
-            ? Get.offNamed<dynamic>(Routes.ONBOARD)
+            ? Get.offNamed<dynamic>(Routes.DASHBOARD)
             : Get.snackbar('Error', 'Invalid email or password');
       });
     } catch (e) {

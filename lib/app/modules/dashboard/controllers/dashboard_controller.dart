@@ -6,7 +6,7 @@ import 'package:flutter_stock_management_app/app/core/services/supabase_service.
 import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
 import 'package:get/get.dart';
 
-class OnboardController extends GetxController {
+class DashboardController extends GetxController {
   final _addMaterialController = Get.put(AddMaterialController());
   final _pageIndex = 0.obs;
   final selectedPrjIndex = 0.obs;
