@@ -10,13 +10,15 @@ class ConnectivityController extends GetxController {
   final isConnected = false.obs;
 
   @override
-  Future<void> onInit() async {
-    await Connectivity().checkConnectivity().then((result) {
-      isInternetConnected(result);
-      Connectivity().onConnectivityChanged.listen(isInternetConnected);
-    });
-
+  void onInit() {
+    _initialize();
     super.onInit();
+  }
+
+  Future<void> _initialize() async {
+    final result = await Connectivity().checkConnectivity();
+    isInternetConnected(result);
+    Connectivity().onConnectivityChanged.listen(isInternetConnected);
   }
 
   bool isInternetConnected(ConnectivityResult? result) {

@@ -13,7 +13,7 @@ class SplashController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    if (ConnectivityController.to.isConnected.value) {
+    if (Get.find<ConnectivityController>().isConnected.value) {
       await Future.delayed(
         Duration(seconds: _splashDuration),
         () {

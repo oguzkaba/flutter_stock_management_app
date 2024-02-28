@@ -12,6 +12,7 @@ import 'package:flutter_stock_management_app/app/core/services/supabase_service.
 import 'package:flutter_stock_management_app/app/core/utils/convert_excel_to_json.dart';
 import 'package:flutter_stock_management_app/app/core/utils/datagrid.dart';
 import 'package:flutter_stock_management_app/app/core/utils/utils.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/custom_banner_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_dialog_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_snackbar_widget.dart';
 import 'package:get/get.dart';
@@ -111,7 +112,7 @@ class AddMaterialController extends GetxController {
     isLoading = true;
     final datagridKey = GlobalKey<SfDataGridState>();
     final data = await ExcelToJson.convertToJSON();
-    if (data?.first.siraNo != null) {
+    if (data != null) {
       await CustomSnackbarWidget.show(
         'Success',
         'Data imported successfully!',
@@ -130,7 +131,7 @@ class AddMaterialController extends GetxController {
                 )
               : DataGridWidget(
                   datagridKey: datagridKey,
-                  data: importDataModelToMaterialsModel(data ?? []),
+                  data: importDataModelToMaterialsModel(data),
                   dataColumn: AppConstants.materilDataGridColumn,
                 ),
         ),
@@ -138,9 +139,10 @@ class AddMaterialController extends GetxController {
         onCancel: () => Get.back<bool>(),
       );
     } else {
-      await CustomSnackbarWidget.show(
+      await CustomBannerWidget.show(
+        Get.context!,
         'ERROR!',
-        'Data not imported!',
+        'Failed to import data! The reason may be "The format of the Excel file to be uploaded is incompatible or missing data".',
         colorText: ColorConstants.myLightRed,
         backgroundColor: ColorConstants.myDarkRed,
       );

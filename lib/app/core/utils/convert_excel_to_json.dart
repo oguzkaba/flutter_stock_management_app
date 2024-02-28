@@ -13,26 +13,37 @@ class ExcelToJson {
   static Future<List<ImportDataModel>?> convertToJSON() async {
     final excel = await _getFile();
 
+    /// If the excel file is null, return null.
     if (excel == null) return null;
 
     final tables = _getTables(excel);
+
+    /// If the tables are empty, return null.
+    if (tables.isEmpty) return null;
+
     final temp = <String, dynamic>{};
 
     for (final table in tables) {
       final keys = excel.tables[table]?.rows.first;
       final rows = excel.tables[table]?.rows;
 
-      if (keys != null && rows != null) {
-        final tempRows = <Map<String, dynamic>>[];
-
-        for (var i = 1; i < rows.length; i++) {
-          final row = rows[i];
-          final tempRow = _getRows(keys, row);
-          tempRows.add(tempRow);
-        }
-
-        temp[table] = tempRows;
+      /// If the keys or rows are null or empty, return null.
+      if ((keys == null || rows == null) || (keys.isEmpty || rows.isEmpty)) {
+        return null;
       }
+
+      /// If the keys are less than 19 or the rows are less than 2, return null.
+      if (keys.length < 19 || rows.length < 2) return null;
+
+      final tempRows = <Map<String, dynamic>>[];
+
+      for (var i = 1; i < rows.length; i++) {
+        final row = rows[i];
+        final tempRow = _getRows(keys, row);
+        tempRows.add(tempRow);
+      }
+
+      temp[table] = tempRows;
 
       final model = importDataModelFromJson(temp[table] as List<dynamic>);
       return model;
@@ -63,7 +74,7 @@ class ExcelToJson {
   static Future<Excel?> _getFile() async {
     final file = await FilePicker.platform.pickFiles(
       onFileLoading: print,
-      //withData: true,
+      withData: true,
       type: FileType.custom,
       allowedExtensions: ['xlsx'],
     );
