@@ -20,12 +20,12 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       body: Center(
         child: Card(
-          child: SizedBox(
-            width: 440,
-            height: 300,
-            child: SingleChildScrollView(
-              child: Obx(
-                () => Form(
+          child: Obx(
+            () => SizedBox(
+              width: 440,
+              height: controller.showError ? 360 : 300,
+              child: SingleChildScrollView(
+                child: Form(
                   key: formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -42,67 +42,16 @@ class LoginView extends GetView<LoginController> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CustomTextField(
-                            controller: emailController,
-                            fillColor: ColorConstants.myWhite,
-                            hintText: 'Email',
-                            prefixIconData: Icons.person,
-                            errorText: controller
-                                .validateEmailTextField(emailController.text),
-                          ),
+                          _emailTFSection(emailController),
                           AppConstants.verticalPaddingSmall,
-                          CustomTextField(
-                            controller: passwordController,
-                            obsecureText: controller.visiblePass,
-                            onPressed: () => controller.toggleVisible(),
-                            iconColor: ColorConstants.myDark,
-                            suffixIconData: controller.visiblePass
-                                ? Icons.visibility_rounded
-                                : Icons.visibility_off_rounded,
-                            fillColor: ColorConstants.myWhite,
-                            hintText: 'Password',
-                            prefixIconData: Icons.lock,
-                            errorText: controller.validatePasswordTextField(
-                              passwordController.text,
-                            ),
-                          ),
+                          _passwordTFSection(passwordController),
                           AppConstants.verticalPaddingSmall,
-                          Row(
-                            children: [
-                              Checkbox(
-                                value: controller.rememberMe,
-                                onChanged: (value) =>
-                                    controller.toggleRememberMe(),
-                              ),
-                              Text(
-                                'Remember me',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(fontSize: 10),
-                              ),
-                            ],
-                          ),
+                          _rememberSection(context),
                           AppConstants.verticalPaddingSmall,
-                          SizedBox(
-                            width: double.infinity,
-                            height: 40,
-                            child: FilledButton.tonal(
-                              onPressed: () async {
-                                if (formKey.currentState!.validate()) {
-                                  await controller.login(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                                } else {
-                                  Get.snackbar(
-                                    'Error',
-                                    'Invalid email or password',
-                                  );
-                                }
-                              },
-                              child: const Text('Login'),
-                            ),
+                          _loginButtonSection(
+                            formKey,
+                            emailController,
+                            passwordController,
                           ),
                         ],
                       ),
@@ -112,6 +61,75 @@ class LoginView extends GetView<LoginController> {
               ),
             ),
           ).paddingAll(12),
+        ),
+      ),
+    );
+  }
+
+  CustomTextField _emailTFSection(TextEditingController emailController) {
+    return CustomTextField(
+      controller: emailController,
+      fillColor: ColorConstants.myWhite,
+      hintText: 'Email',
+      prefixIconData: Icons.person,
+      errorText: controller.validateEmailTextField(emailController.text),
+    );
+  }
+
+  CustomTextField _passwordTFSection(TextEditingController passwordController) {
+    return CustomTextField(
+      controller: passwordController,
+      obsecureText: controller.visiblePass,
+      onPressed: () => controller.toggleVisible(),
+      iconColor: ColorConstants.myDark,
+      suffixIconData: controller.visiblePass
+          ? Icons.visibility_rounded
+          : Icons.visibility_off_rounded,
+      fillColor: ColorConstants.myWhite,
+      hintText: 'Password',
+      prefixIconData: Icons.lock,
+      errorText: controller.validatePasswordTextField(
+        passwordController.text,
+      ),
+    );
+  }
+
+  Row _rememberSection(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(
+          value: controller.rememberMe,
+          onChanged: (value) => controller.toggleRememberMe(),
+        ),
+        Text(
+          'Remember me',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10),
+        ),
+      ],
+    );
+  }
+
+  SizedBox _loginButtonSection(
+    GlobalKey<FormState> formKey,
+    TextEditingController emailController,
+    TextEditingController passwordController,
+  ) {
+    return SizedBox(
+      width: double.infinity,
+      height: 40,
+      child: FilledButton.tonal(
+        onPressed: controller.isLoading
+            ? null
+            : () async {
+                if (formKey.currentState!.validate()) {
+                  await controller.login(
+                    email: emailController.text.trim(),
+                    password: passwordController.text.trim(),
+                  );
+                }
+              },
+        child: Text(
+          controller.isLoading ? 'Loading...' : 'Login',
         ),
       ),
     );

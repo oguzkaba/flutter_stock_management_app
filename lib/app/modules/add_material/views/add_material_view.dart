@@ -76,7 +76,15 @@ class AddMaterialView extends GetView<AddMaterialController> {
                           )
                         : DataGridWidget(
                             datagridKey: key,
-                            data: Get.find<HomeController>().allMaterialList,
+                            data: Get.find<HomeController>()
+                                .allMaterialList
+                                .where(
+                                  (element) =>
+                                      element.truckNo?.padLeft(4, '0') ==
+                                      controller.selectReport.value?.repNo
+                                          .substring(3),
+                                )
+                                .toList(),
                             dataColumn: AppConstants.materilDataGridColumn,
                           ),
                   ),

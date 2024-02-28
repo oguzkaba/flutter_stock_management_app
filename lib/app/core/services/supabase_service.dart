@@ -13,6 +13,9 @@ abstract class ISupabaseService {
     required String email,
     required String password,
   });
+  StreamSubscription<AuthState> onAuthStateChange(
+    void Function(AuthState state) callback,
+  );
   Future<UserResponse> updateUser({required UserAttributes userAttributes});
   Future<void> signOut();
 
@@ -106,5 +109,12 @@ class SupabaseService extends ISupabaseService {
     required String table,
   }) {
     return _supabase.from(table).stream(primaryKey: ['id']);
+  }
+
+  @override
+  StreamSubscription<AuthState> onAuthStateChange(
+    void Function(AuthState state) callback,
+  ) {
+    return _supabase.auth.onAuthStateChange.listen(callback);
   }
 }

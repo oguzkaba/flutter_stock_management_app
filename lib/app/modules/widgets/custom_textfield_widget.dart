@@ -58,7 +58,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: AutovalidateMode.disabled,
       validator: errorText == null ? null : (value) => errorText,
       controller: controller,
       textAlignVertical: TextAlignVertical.center,
