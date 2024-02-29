@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:flutter_stock_management_app/app/modules/splash/controllers/splash_controller.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,11 @@ class SplashView extends GetView<SplashController> {
                 fontWeight: FontWeight.bold,
                 foreground: Paint()..shader = linearGradient,
               ),
+            ),
+            AppConstants.verticalPaddingSmall,
+            const SizedBox(
+              width: 64,
+              child: LinearProgressIndicator(),
             ),
           ],
         ),

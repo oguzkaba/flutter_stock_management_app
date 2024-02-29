@@ -127,8 +127,8 @@ class DashboardView extends GetView<DashboardController> {
         ? SizedBox(
             width: controller.serchBoxFocus.value ? 400 : 200,
             child: CustomTextField(
-              focusNode: controller.focus,
-              onSubmitted: (value) => debugPrint('Search Enter Key'),
+              //focusNode: controller.focus,
+              onChanged: (value) => debugPrint('Search Enter Key'),
               fillColor: ColorConstants.myLightGrey,
               hintText: 'Search here...',
               prefixIconData: Icons.search,

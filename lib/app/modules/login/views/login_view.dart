@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
 import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:flutter_stock_management_app/app/modules/login/controllers/login_controller.dart';
@@ -10,24 +11,29 @@ import 'package:get/get.dart';
 /// for easy integration of state management using the GetX library.
 class LoginView extends GetView<LoginController> {
   ///Constructor
-  const LoginView({super.key});
+  LoginView({super.key});
+
+  /// The `final formKey` is a `GlobalKey` that is used to identify the `Form` widget in the widget tree.
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
+    final emailFocusNode = FocusNode();
+    final passwordFocusNode = FocusNode();
     return Scaffold(
       body: Center(
         child: Card(
-          child: Obx(
-            () => SizedBox(
-              width: 440,
-              height: controller.showError ? 360 : 300,
-              child: SingleChildScrollView(
-                child: Form(
-                  key: formKey,
-                  child: Column(
+          child: SizedBox(
+            width: 440,
+            height: controller.showError ? 360 : 300,
+            child: SingleChildScrollView(
+              child: Form(
+                autovalidateMode: AutovalidateMode.always,
+                key: formKey,
+                child: Obx(
+                  () => Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset('assets/images/logo.png', width: 32),
@@ -42,14 +48,21 @@ class LoginView extends GetView<LoginController> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          _emailTFSection(emailController),
+                          _emailTFSection(
+                            passwordController: passwordController,
+                            emailController: emailController,
+                            emailFN: emailFocusNode,
+                          ),
                           AppConstants.verticalPaddingSmall,
-                          _passwordTFSection(passwordController),
+                          _passwordTFSection(
+                            passwordController: passwordController,
+                            emailController: emailController,
+                            passFN: passwordFocusNode,
+                          ),
                           AppConstants.verticalPaddingSmall,
                           _rememberSection(context),
                           AppConstants.verticalPaddingSmall,
                           _loginButtonSection(
-                            formKey,
                             emailController,
                             passwordController,
                           ),
@@ -66,32 +79,68 @@ class LoginView extends GetView<LoginController> {
     );
   }
 
-  CustomTextField _emailTFSection(TextEditingController emailController) {
-    return CustomTextField(
-      controller: emailController,
-      fillColor: ColorConstants.myWhite,
-      hintText: 'Email',
-      prefixIconData: Icons.person,
-      errorText: controller.validateEmailTextField(emailController.text),
+  Widget _emailTFSection({
+    required TextEditingController emailController,
+    required TextEditingController passwordController,
+    required FocusNode emailFN,
+  }) {
+    return KeyboardListener(
+      focusNode: emailFN,
+      onKeyEvent: (event) async {
+        if (event.logicalKey == LogicalKeyboardKey.enter) {
+          await _loginMethod(emailController, passwordController);
+        }
+      },
+      child: CustomTextField(
+        onChanged: (value) => controller.validateEmailTextField(value),
+        controller: emailController,
+        validator: (value) => controller.validateEmailTextField(value),
+        fillColor: ColorConstants.myWhite,
+        hintText: 'Email',
+        prefixIconData: Icons.person,
+      ),
     );
   }
 
-  CustomTextField _passwordTFSection(TextEditingController passwordController) {
-    return CustomTextField(
-      controller: passwordController,
-      obsecureText: controller.visiblePass,
-      onPressed: () => controller.toggleVisible(),
-      iconColor: ColorConstants.myDark,
-      suffixIconData: controller.visiblePass
-          ? Icons.visibility_rounded
-          : Icons.visibility_off_rounded,
-      fillColor: ColorConstants.myWhite,
-      hintText: 'Password',
-      prefixIconData: Icons.lock,
-      errorText: controller.validatePasswordTextField(
-        passwordController.text,
+  Widget _passwordTFSection({
+    required TextEditingController passwordController,
+    required TextEditingController emailController,
+    required FocusNode passFN,
+  }) {
+    return KeyboardListener(
+      focusNode: passFN,
+      onKeyEvent: (event) async {
+        if (event.logicalKey == LogicalKeyboardKey.enter) {
+          await _loginMethod(emailController, passwordController);
+        }
+      },
+      child: CustomTextField(
+        controller: passwordController,
+        validator: (value) => controller.validatePasswordTextField(value),
+        obsecureText: controller.visiblePass,
+        onPressed: () => controller.toggleVisible(),
+        iconColor: ColorConstants.myDark,
+        suffixIconData: controller.visiblePass
+            ? Icons.visibility_rounded
+            : Icons.visibility_off_rounded,
+        fillColor: ColorConstants.myWhite,
+        hintText: 'Password',
+        prefixIconData: Icons.lock,
+        onChanged: (value) => controller.validatePasswordTextField(value),
       ),
     );
+  }
+
+  Future<void> _loginMethod(
+    TextEditingController emailController,
+    TextEditingController passwordController,
+  ) async {
+    if (formKey.currentState!.validate()) {
+      await controller.login(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    }
   }
 
   Row _rememberSection(BuildContext context) {
@@ -110,7 +159,6 @@ class LoginView extends GetView<LoginController> {
   }
 
   SizedBox _loginButtonSection(
-    GlobalKey<FormState> formKey,
     TextEditingController emailController,
     TextEditingController passwordController,
   ) {
@@ -118,16 +166,9 @@ class LoginView extends GetView<LoginController> {
       width: double.infinity,
       height: 40,
       child: FilledButton.tonal(
-        onPressed: controller.isLoading
+        onPressed: () async => controller.isLoading
             ? null
-            : () async {
-                if (formKey.currentState!.validate()) {
-                  await controller.login(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                  );
-                }
-              },
+            : await _loginMethod(emailController, passwordController),
         child: Text(
           controller.isLoading ? 'Loading...' : 'Login',
         ),

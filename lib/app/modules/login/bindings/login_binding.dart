@@ -1,4 +1,3 @@
-import 'package:flutter_stock_management_app/app/core/controllers/window_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/login/controllers/login_controller.dart';
 import 'package:get/get.dart';
 
@@ -8,12 +7,8 @@ import 'package:get/get.dart';
 class LoginBinding extends Bindings {
   @override
   void dependencies() {
-    Get
-      ..lazyPut<LoginController>(
-        LoginController.new,
-      )
-      ..put<WindowController>(
-        WindowController(),
-      );
+    Get.put<LoginController>(
+      LoginController(),
+    );
   }
 }

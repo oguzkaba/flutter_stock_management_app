@@ -11,11 +11,11 @@ class ConnectivityController extends GetxController {
 
   @override
   void onInit() {
-    _initialize();
+    initialize();
     super.onInit();
   }
 
-  Future<void> _initialize() async {
+  Future<void> initialize() async {
     final result = await Connectivity().checkConnectivity();
     isInternetConnected(result);
     Connectivity().onConnectivityChanged.listen(isInternetConnected);

@@ -52,9 +52,9 @@ class DashboardController extends GetxController {
 
   @override
   void onClose() {
-    focus
-      ..removeListener(onFocusChange)
-      ..dispose();
+    // focus
+    //   ..removeListener(onFocusChange)
+    //   ..dispose();
     super.onClose();
   }
 

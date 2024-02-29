@@ -2,7 +2,7 @@
 
 import 'package:flutter_stock_management_app/app/core/controllers/connectivity_controller.dart';
 import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/splash/controllers/splash_controller.dart';
+import 'package:flutter_stock_management_app/app/core/controllers/window_controller.dart';
 import 'package:get/get.dart';
 
 class InitBindings extends Bindings {
@@ -11,6 +11,6 @@ class InitBindings extends Bindings {
     Get
       ..put<ConnectivityController>(ConnectivityController())
       ..put<ThemeController>(ThemeController())
-      ..put<SplashController>(SplashController());
+      ..put<WindowController>(WindowController());
   }
 }

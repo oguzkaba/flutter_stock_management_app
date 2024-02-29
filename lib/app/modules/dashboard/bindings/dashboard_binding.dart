@@ -1,5 +1,3 @@
-import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
-import 'package:flutter_stock_management_app/app/core/controllers/window_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/home/controllers/home_controller.dart';
@@ -17,14 +15,8 @@ class DashboardBinding extends Bindings {
       ..put<AddMaterialController>(
         AddMaterialController(),
       )
-      ..put<ThemeController>(
-        ThemeController(),
-      )
       ..put<HomeController>(
         HomeController(),
-      )
-      ..put<WindowController>(
-        WindowController(),
       );
   }
 }

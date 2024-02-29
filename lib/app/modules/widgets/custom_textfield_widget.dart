@@ -11,15 +11,15 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     required this.fillColor,
     required this.prefixIconData,
-    this.controller,
     super.key,
     this.focusNode,
     this.suffixIconData,
-    this.onSubmitted,
+    this.onChanged,
     this.obsecureText,
     this.onPressed,
     this.iconColor,
-    this.errorText,
+    this.validator,
+    this.controller,
   });
 
   /// These are the properties of the `CustomTextField` class.
@@ -47,28 +47,28 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onPressed;
 
   /// These are the properties of the `CustomTextField` class.
-  final ValueChanged<String>? onSubmitted;
+  final ValueChanged<String>? onChanged;
+
+  /// These are the properties of the `CustomTextField` class.
+  final String? Function(String?)? validator;
 
   /// These are the properties of the `CustomTextField` class.
   final TextEditingController? controller;
 
-  /// These are the properties of the `CustomTextField` class.
-  final String? errorText;
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autovalidateMode: AutovalidateMode.disabled,
-      validator: errorText == null ? null : (value) => errorText,
+      key: UniqueKey(),
       controller: controller,
+      validator: validator,
       textAlignVertical: TextAlignVertical.center,
       focusNode: focusNode,
-      //onSubmitted: onSubmitted,
       obscureText: obsecureText ?? false,
+      onChanged: onChanged,
       style:
           context.textTheme.bodySmall?.copyWith(color: ColorConstants.myDark),
       decoration: InputDecoration(
-        errorText: errorText,
+        //errorText: errorText,
         prefixIcon: Icon(
           prefixIconData,
           color: ColorConstants.myMediumGrey,
