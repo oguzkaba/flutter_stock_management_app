@@ -12,8 +12,12 @@ import 'package:get/get.dart';
 /// The `class LoginController` is extending the `GetxController` class. This means that
 /// `LoginController` inherits all the properties and methods of the `GetxController` class.
 class LoginController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
+
   final _visiblePass = true.obs;
   final _rememberMe = true.obs;
   final _showErrorEmail = true.obs;
@@ -57,11 +61,20 @@ class LoginController extends GetxController {
     return null;
   }
 
-  Future<void> login({required String email, required String password}) async {
+  Future<void> login() async {
+    if (formKey.currentState!.validate()) {
+      await loginSupabase();
+    }
+  }
+
+  Future<void> loginSupabase() async {
     _isLoading.value = true;
     try {
       await SupabaseService.instance
-          .signinWithEmail(email: email, password: password)
+          .signinWithEmail(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      )
           .then((value) {
         value.user != null
             ? Get.offNamed<dynamic>(Routes.DASHBOARD)

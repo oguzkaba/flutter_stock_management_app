@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
+import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_dialog_widget.dart';
@@ -7,26 +9,25 @@ import 'package:get/get.dart';
 
 class ConnectivityController extends GetxController {
   static ConnectivityController get to => Get.find<ConnectivityController>();
-  final isConnected = false.obs;
-
-  @override
-  void onInit() {
-    initialize();
-    super.onInit();
-  }
+  StreamSubscription<ConnectivityResult>? subscription;
 
   Future<void> initialize() async {
     final result = await Connectivity().checkConnectivity();
     isInternetConnected(result);
-    Connectivity().onConnectivityChanged.listen(isInternetConnected);
+    subscription =
+        Connectivity().onConnectivityChanged.listen(isInternetConnected);
   }
+
+  final isConnected = false.obs;
 
   bool isInternetConnected(ConnectivityResult? result) {
     if (result == ConnectivityResult.none) {
       _connectivityActions(false);
       return false;
     } else if (result == ConnectivityResult.mobile ||
-        result == ConnectivityResult.wifi) {
+        result == ConnectivityResult.wifi ||
+        result == ConnectivityResult.ethernet ||
+        result == ConnectivityResult.bluetooth) {
       _connectivityActions(true);
       return true;
     }
@@ -51,7 +52,7 @@ class ConnectivityController extends GetxController {
 
   @override
   void onClose() {
-    Connectivity().onConnectivityChanged.listen(isInternetConnected).cancel();
+    subscription?.cancel();
     super.onClose();
   }
 }

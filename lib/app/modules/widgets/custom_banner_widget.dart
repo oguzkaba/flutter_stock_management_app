@@ -13,6 +13,7 @@ class CustomBannerWidget {
     Color? colorText,
     Widget? child,
   }) async {
+    ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
         content: Text(message),

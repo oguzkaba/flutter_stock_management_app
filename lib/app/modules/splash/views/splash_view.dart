@@ -16,7 +16,7 @@ class SplashView extends GetView<SplashController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo.png', width: 32),
+            Image.asset('assets/images/logo.png', width: 64),
             Text(
               'Stocker',
               style: TextStyle(
@@ -26,7 +26,7 @@ class SplashView extends GetView<SplashController> {
             ),
             AppConstants.verticalPaddingSmall,
             const SizedBox(
-              width: 64,
+              width: 84,
               child: LinearProgressIndicator(),
             ),
           ],
