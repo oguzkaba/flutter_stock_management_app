@@ -135,8 +135,8 @@ class AddMaterialController extends GetxController {
                   dataColumn: AppConstants.materilDataGridColumn,
                 ),
         ),
-        onOk: () => Get.back<bool>(),
-        onCancel: () => Get.back<bool>(),
+        onOk: () => Get.back<dynamic>(),
+        onCancel: () => Get.back<dynamic>(),
       );
     } else {
       await CustomBannerWidget.show(

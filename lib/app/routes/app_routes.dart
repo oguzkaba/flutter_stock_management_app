@@ -11,6 +11,7 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const ADD_MATERIAL = _Paths.ADD_MATERIAL;
   static const SPLASH = _Paths.SPLASH;
+  static const NO_CONNECTIVITY = _Paths.NO_CONNECTIVITY;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const ADD_MATERIAL = '/add-material';
   static const SPLASH = '/splash';
+  static const NO_CONNECTIVITY = '/no-internet';
 }

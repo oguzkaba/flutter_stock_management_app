@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stock_management_app/app/modules/add_material/bindings/add_material_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/add_material/views/add_material_view.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/bindings/dashboard_binding.dart';
+import 'package:flutter_stock_management_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:flutter_stock_management_app/app/modules/home/bindings/home_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
 import 'package:flutter_stock_management_app/app/modules/login/bindings/login_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/login/views/login_view.dart';
-import 'package:flutter_stock_management_app/app/modules/dashboard/bindings/dashboard_binding.dart';
-import 'package:flutter_stock_management_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:flutter_stock_management_app/app/modules/splash/bindings/splash_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/splash/views/splash_view.dart';
+import 'package:flutter_stock_management_app/app/modules/widgets/no_connectivity_widget.dart';
 import 'package:get/get.dart';
 
 // ignore_for_file: constant_identifier_names
@@ -57,6 +58,10 @@ class AppPages {
       name: _Paths.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
+    ),
+    GetPage<Widget>(
+      name: _Paths.NO_CONNECTIVITY,
+      page: () => const NoConnectivityWidget(),
     ),
   ];
 }

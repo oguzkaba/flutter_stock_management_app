@@ -19,7 +19,7 @@ class ThemeController extends GetxController {
   }
 
   bool isSavedDarkMode() {
-    return _getStorage.read(storageKey) ?? false;
+    return _getStorage.read(storageKey) ?? true;
   }
 
   Future<void> saveThemeMode({bool? isDarkMode}) async {

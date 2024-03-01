@@ -32,7 +32,7 @@ final class CustomExitButton extends StatelessWidget {
             SupabaseService.instance.signOut();
             Get.offAllNamed<dynamic>(Routes.LOGIN);
           },
-          onCancel: Get.back<bool>,
+          onCancel: Get.back<dynamic>,
         );
       },
       icon: Icon(

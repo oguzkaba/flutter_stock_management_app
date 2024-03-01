@@ -30,7 +30,7 @@ class WindowController extends GetxController with WindowListener {
         child: const Text(
           'All unsaved data will be lost. Do you want to continue?',
         ),
-        onCancel: () => Get.back<bool>(),
+        onCancel: () => Get.back<dynamic>(),
         onOk: () async {
           await windowManager.destroy();
         },

@@ -20,51 +20,57 @@ class LoginController extends GetxController {
 
   final _visiblePass = true.obs;
   final _rememberMe = true.obs;
-  final _showErrorEmail = true.obs;
-  final _showErrorPass = true.obs;
   final _isLoading = false.obs;
+  final _isEmailValid = true.obs;
+  final _isPassValid = true.obs;
 
   /// Getters
   bool get visiblePass => _visiblePass.value;
   bool get rememberMe => _rememberMe.value;
   bool get isLoading => _isLoading.value;
-  bool get showError => _showErrorEmail.value || _showErrorPass.value;
 
-  /// The `toggleVisible` method is used to toggle the visibility of the password.
   void toggleVisible() => _visiblePass.value = !_visiblePass.value;
   void toggleRememberMe() => _rememberMe.value = !_rememberMe.value;
   void toggleLoading() => _isLoading.value = !_isLoading.value;
 
+  double getFormHeight() {
+    if (_isEmailValid.value && _isPassValid.value) {
+      return 300;
+    } else if (_isEmailValid.value || _isPassValid.value) {
+      return 320;
+    } else {
+      return 340;
+    }
+  }
+
   String? validateEmailTextField(String? value) {
     if (value == null || value.isEmpty) {
-      _showErrorEmail.value = true;
-      return 'Email is required';
+      _isEmailValid.value = false;
+      return '*Email is required';
     }
     if (!GetUtils.isEmail(value)) {
-      _showErrorEmail.value = true;
-      return 'Invalid email';
+      _isEmailValid.value = false;
+      return '*Invalid email';
     }
-    _showErrorEmail.value = false;
+    _isEmailValid.value = true;
     return null;
   }
 
   String? validatePasswordTextField(String? value) {
     if (value == null || value.isEmpty) {
-      _showErrorPass.value = true;
-      return 'Password is required';
+      _isPassValid.value = false;
+      return '*Password is required';
     }
     if (value.length < 6) {
-      _showErrorPass.value = true;
-      return 'Password must be at least 6 characters long';
+      _isPassValid.value = false;
+      return '*Password must be at least 6 characters long';
     }
-    _showErrorPass.value = false;
+    _isPassValid.value = true;
     return null;
   }
 
   Future<void> login() async {
-    if (formKey.currentState!.validate()) {
-      await loginSupabase();
-    }
+    if (formKey.currentState!.validate()) await loginSupabase();
   }
 
   Future<void> loginSupabase() async {

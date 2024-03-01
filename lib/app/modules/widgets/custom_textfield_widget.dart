@@ -58,7 +58,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      key: UniqueKey(),
+      key: key,
       controller: controller,
       validator: validator,
       textAlignVertical: TextAlignVertical.center,
@@ -68,7 +68,6 @@ class CustomTextField extends StatelessWidget {
       style:
           context.textTheme.bodySmall?.copyWith(color: ColorConstants.myDark),
       decoration: InputDecoration(
-        //errorText: errorText,
         prefixIcon: Icon(
           prefixIconData,
           color: ColorConstants.myMediumGrey,

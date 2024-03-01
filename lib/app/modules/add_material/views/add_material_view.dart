@@ -237,7 +237,7 @@ class AddMaterialView extends GetView<AddMaterialController> {
           title: 'Add - Shipment Report',
           child: const AddNewReportWidget(),
           onOk: () {
-            Get.back<bool>();
+            Get.back<dynamic>();
           },
           onCancel: () async {
             await CustomDialogWidget.show(
@@ -246,7 +246,7 @@ class AddMaterialView extends GetView<AddMaterialController> {
               child: const Text(
                 'All unsaved data will be lost. Do you want to continue?',
               ),
-              onCancel: () => Get.back<bool>(),
+              onCancel: () => Get.back<dynamic>(),
               onOk: () => Get
                 ..back<bool>()
                 ..back<bool>(),
