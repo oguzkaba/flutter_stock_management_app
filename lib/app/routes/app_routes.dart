@@ -11,6 +11,7 @@ abstract class Routes {
   static const DASHBOARD = _Paths.DASHBOARD;
   static const HOME = _Paths.HOME;
   static const ADD_MATERIAL = _Paths.ADD_MATERIAL;
+  static const NOCONNECTIVITY = _Paths.NOCONNECTIVITY;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const DASHBOARD = '/dashboard';
   static const HOME = '/home';
   static const ADD_MATERIAL = '/add-material';
+  static const NOCONNECTIVITY = '/no-connectivity';
 }

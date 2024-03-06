@@ -31,9 +31,7 @@ class DashboardView extends GetView<DashboardController> {
           child: Obx(
             () => SafeArea(
               child: Scaffold(
-                drawer: !Responsive.isDesktop(context)
-                    ? const DrawerWidget()
-                    : null,
+                drawer: !GetPlatform.isDesktop ? const DrawerWidget() : null,
                 appBar: AppBar(
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   title: Row(

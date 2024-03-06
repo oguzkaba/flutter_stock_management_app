@@ -15,15 +15,11 @@ class CustomSnackbarWidget {
     Get.snackbar(
       title,
       message,
-      mainButton: TextButton(
-        onPressed: Get.closeCurrentSnackbar,
-        child: const Text('OK'),
-      ),
-      snackPosition: SnackPosition.TOP,
+      snackStyle: SnackStyle.FLOATING,
       backgroundColor: backgroundColor ??
           (Get.isDarkMode
-              ? ColorConstants.myDark
-              : ColorConstants.primaryColor),
+              ? ColorConstants.myDark.withOpacity(.7)
+              : ColorConstants.primaryColor.withOpacity(.7)),
       colorText: colorText ??
           (Get.isDarkMode
               ? ColorConstants.myLightGrey

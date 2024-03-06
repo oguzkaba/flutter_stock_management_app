@@ -1,11 +1,15 @@
 // ignore_for_file: public_member_api_docs
 
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
+import 'package:flutter_stock_management_app/app/modules/splash/controllers/splash_controller.dart';
+import 'package:flutter_stock_management_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
+/// ConnectivityController is a GetxController that is
+/// responsible for managing the internet connection status of the app.
 class ConnectivityController extends GetxController {
   final isOnline = false.obs;
   static ConnectivityController get to => Get.find<ConnectivityController>();
@@ -13,46 +17,62 @@ class ConnectivityController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    isOnline.value =
-        await _connectivity.checkConnectivity() != ConnectivityResult.none;
-    connectivityActions();
+    /// Check if the user is onConnectivityChanged subscription
+
     _connectivity.onConnectivityChanged.listen(_onConnectivityChanged);
     super.onInit();
   }
 
-  bool _onConnectivityChanged(
+  /// Check if the user is first connection status
+  Future<void> isFirstTimeConnectivity() async {
+    final isFirsTimeOnline =
+        await _connectivity.checkConnectivity() != ConnectivityResult.none;
+    connectivityActions(connectionState: isFirsTimeOnline, isFirstTime: true);
+  }
+
+  void _onConnectivityChanged(
     ConnectivityResult connectivityResult,
   ) {
-    if (connectivityResult == ConnectivityResult.none) {
+    /// Check if the user is not connected to the internet AND [old state] is true then
+    if (isOnline.value == true &&
+        connectivityResult == ConnectivityResult.none) {
+      log('NO- Internet Connection', name: 'ConnectivityController');
       isOnline.value = false;
-      connectivityActions();
-      return false;
-    } else if (connectivityResult == ConnectivityResult.wifi ||
-        connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.ethernet ||
-        connectivityResult == ConnectivityResult.bluetooth) {
+      connectivityActions(connectionState: isOnline.value);
+    }
+
+    /// Check if the user is connected to the internet AND [old state] is false then
+    else if (isOnline.value == false &&
+        connectivityResult != ConnectivityResult.none) {
+      log('YESSS- Internet Connection', name: 'ConnectivityController');
       isOnline.value = true;
-      connectivityActions();
-      return true;
-    } else {
-      isOnline.value = false;
-      connectivityActions();
-      return false;
+      connectivityActions(connectionState: isOnline.value);
     }
   }
 
-  //TODO:snackbar yerine banner denenecek
-  void connectivityActions() {
-    if (!isOnline.value) {
-      Get
-        ..closeAllSnackbars()
-        ..rawSnackbar(
-          title: 'No Internet Connection',
-          message: 'Please check your internet connection.',
-          backgroundColor: ColorConstants.myDarkRed,
-          isDismissible: false,
-          snackStyle: SnackStyle.GROUNDED,
-        );
+  void connectivityActions({
+    required bool connectionState,
+    bool isFirstTime = false,
+  }) {
+    /// Check if the user is not connected to the internet AND current route [NOCONNECTIVITY] then
+    if (!connectionState && Get.currentRoute != Routes.NOCONNECTIVITY) {
+      Get.toNamed<dynamic>(Routes.NOCONNECTIVITY, preventDuplicates: false);
+    }
+
+    /// Check if the user connected to the internet AND splash screen from then
+    else if (connectionState && isFirstTime) {
+      SplashController.to.redirectRoute();
+    }
+
+    /// Check if the user connected to the internet AND current route [NOCONNECTIVITY] then
+    else if (connectionState && Get.currentRoute == Routes.NOCONNECTIVITY) {
+      Get.close(1);
+
+      /// close the route [NOCONNECTIVITY] then
+      /// current route [SPLASH] then
+      if (Get.currentRoute == Routes.SPLASH) {
+        SplashController.to.redirectRoute();
+      }
     }
   }
 
@@ -60,51 +80,4 @@ class ConnectivityController extends GetxController {
   Future<void> onClose() async {
     super.onClose();
   }
-
-  ///dialog
-
-  // Future<void> initialize() async {
-  //   final result = await Connectivity().checkConnectivity();
-  //   isInternetConnected(result);
-  //   subscription =
-  //       Connectivity().onConnectivityChanged.listen(isInternetConnected);
-  // }
-
-  // final isConnected = false.obs;
-
-  // bool isInternetConnected(ConnectivityResult? result) {
-  //   if (result == ConnectivityResult.none) {
-  //     _connectivityActions(false);
-  //     return false;
-  //   } else if (result == ConnectivityResult.mobile ||
-  //       result == ConnectivityResult.wifi ||
-  //       result == ConnectivityResult.ethernet ||
-  //       result == ConnectivityResult.bluetooth) {
-  //     _connectivityActions(true);
-  //     return true;
-  //   }
-  //   _connectivityActions(false);
-  //   return false;
-  // }
-
-  // void _connectivityActions(bool isInternetConnected) {
-  //   if (isInternetConnected) {
-  //     if (Get.isDialogOpen ?? false) Get.back<dynamic>();
-  //     isConnected.value = isInternetConnected;
-  //   } else {
-  //     CustomDialogWidget.show(
-  //       dialogName: 'No Internet Connection',
-  //       title: 'No Internet Connection',
-  //       child: const Text('Please check your internet connection.'),
-  //       isConnected: false,
-  //     );
-  //     isConnected.value = isInternetConnected;
-  //   }
-  // }
-
-  // @override
-  // void onClose() {
-  //   subscription?.cancel();
-  //   super.onClose();
-  // }
 }

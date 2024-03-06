@@ -1,19 +1,16 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class NoConnectivityWidget extends StatelessWidget {
   const NoConnectivityWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
+    return const PopScope(
       canPop: false,
-      child: SizedBox(
-        width: Get.width,
-        height: Get.height,
-        child: const Center(
+      child: Scaffold(
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
+import 'dart:async';
+
 import 'package:flutter_stock_management_app/app/core/controllers/connectivity_controller.dart';
 import 'package:flutter_stock_management_app/app/core/services/supabase_service.dart';
 import 'package:flutter_stock_management_app/app/routes/app_pages.dart';
@@ -17,23 +19,19 @@ class SplashController extends GetxController {
   }
 
   Future<void> _initAppConnectAndAuth() async {
-    ConnectivityController.to.isOnline.stream.listen((isOnline) {
-      if (isOnline) {
-        _redirectRoute();
-      }
-    });
+    ///Check if the user is first connection status
+    await ConnectivityController.to.isFirstTimeConnectivity();
   }
 
-  Future<void> _redirectRoute() async {
-    return Future.delayed(
-      Duration(seconds: _splashDuration),
-      () {
-        if (_supabase.user != null) {
-          Get.offAllNamed<dynamic>(Routes.DASHBOARD);
-        } else {
-          Get.offAllNamed<dynamic>(Routes.LOGIN);
-        }
-      },
-    );
+  ///If the user is connected to the internet, it redirects to the route
+  Future<void> redirectRoute() {
+    return Future.delayed(Duration(seconds: _splashDuration), () async {
+      ///Check if the user is connected to the Supabase
+      if (_supabase.user != null) {
+        await Get.offAllNamed<dynamic>(Routes.DASHBOARD);
+      } else {
+        await Get.offAllNamed<dynamic>(Routes.LOGIN);
+      }
+    });
   }
 }

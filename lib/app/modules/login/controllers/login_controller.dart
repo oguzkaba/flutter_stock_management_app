@@ -8,6 +8,7 @@ import 'package:flutter_stock_management_app/app/core/services/supabase_service.
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_snackbar_widget.dart';
 import 'package:flutter_stock_management_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// The `class LoginController` is extending the `GetxController` class. This means that
 /// `LoginController` inherits all the properties and methods of the `GetxController` class.
@@ -82,10 +83,22 @@ class LoginController extends GetxController {
         password: passwordController.text.trim(),
       )
           .then((value) {
-        value.user != null
-            ? Get.offNamed<dynamic>(Routes.HOME)
-            : Get.snackbar('Error', 'Invalid email or password');
+        if (value.user != null) Get.offAllNamed<dynamic>(Routes.DASHBOARD);
       });
+    } on AuthException catch (e) {
+      await CustomSnackbarWidget.show(
+        'Error',
+        e.message,
+        backgroundColor: ColorConstants.myDarkRed,
+        colorText: ColorConstants.myLightRed,
+      );
+    } on TimeoutException catch (e) {
+      await CustomSnackbarWidget.show(
+        'Error',
+        e.toString(),
+        backgroundColor: ColorConstants.myDarkRed,
+        colorText: ColorConstants.myLightRed,
+      );
     } catch (e) {
       await CustomSnackbarWidget.show(
         'Error',
