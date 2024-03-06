@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:flutter_stock_management_app/app/core/init/init_bindings.dart';
@@ -10,6 +11,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:window_manager/window_manager.dart';
 
 Future<void> main() async {
+  /// Initialize window manager for desktop
   if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
     WidgetsFlutterBinding.ensureInitialized();
     await windowManager.ensureInitialized();
@@ -27,9 +29,20 @@ Future<void> main() async {
     });
   }
 
+  /// Set preferred orientations for mobile
+  if (GetPlatform.isMobile) {
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+
+  /// Initialize GetStorage
   await GetStorage.init();
+
+  /// Load .env file
   await dotenv.load();
 
+  /// Initialize Supabase
   await Supabase.initialize(
     url: dotenv.get('SUPABASE_URL'),
     anonKey: dotenv.get('SUPABASE_ANONKEY'),
@@ -37,6 +50,7 @@ Future<void> main() async {
 
   runApp(
     GetMaterialApp(
+      title: 'Stocker | Stock Management App',
       defaultTransition: Transition.native,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,

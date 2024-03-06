@@ -3,56 +3,65 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_stock_management_app/app/routes/app_pages.dart';
+import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:get/get.dart';
 
 class ConnectivityController extends GetxController {
   final isOnline = false.obs;
   static ConnectivityController get to => Get.find<ConnectivityController>();
   final Connectivity _connectivity = Connectivity();
-  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
   @override
   Future<void> onInit() async {
     isOnline.value =
         await _connectivity.checkConnectivity() != ConnectivityResult.none;
     connectivityActions();
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen(_onConnectivityChanged);
+    _connectivity.onConnectivityChanged.listen(_onConnectivityChanged);
     super.onInit();
   }
 
-  Future<void> _onConnectivityChanged(
+  bool _onConnectivityChanged(
     ConnectivityResult connectivityResult,
-  ) async {
+  ) {
     if (connectivityResult == ConnectivityResult.none) {
       isOnline.value = false;
+      connectivityActions();
+      return false;
     } else if (connectivityResult == ConnectivityResult.wifi ||
         connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.ethernet ||
         connectivityResult == ConnectivityResult.bluetooth) {
       isOnline.value = true;
+      connectivityActions();
+      return true;
     } else {
       isOnline.value = false;
+      connectivityActions();
+      return false;
     }
-    connectivityActions();
   }
 
+  //TODO:snackbar yerine banner denenecek
   void connectivityActions() {
-    if (isOnline.value) {
-      if (Get.currentRoute == Routes.NO_CONNECTIVITY) {
-        Get.back<dynamic>();
-      }
-    } else {
-      Get.toNamed<dynamic>(Routes.NO_CONNECTIVITY);
+    if (!isOnline.value) {
+      Get
+        ..closeAllSnackbars()
+        ..rawSnackbar(
+          title: 'No Internet Connection',
+          message: 'Please check your internet connection.',
+          backgroundColor: ColorConstants.myDarkRed,
+          isDismissible: false,
+          snackStyle: SnackStyle.GROUNDED,
+        );
     }
   }
 
   @override
   Future<void> onClose() async {
-    await _connectivitySubscription.cancel();
     super.onClose();
   }
+
+  ///dialog
 
   // Future<void> initialize() async {
   //   final result = await Connectivity().checkConnectivity();

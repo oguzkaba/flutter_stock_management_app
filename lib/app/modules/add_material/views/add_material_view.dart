@@ -248,8 +248,8 @@ class AddMaterialView extends GetView<AddMaterialController> {
               ),
               onCancel: () => Get.back<dynamic>(),
               onOk: () => Get
-                ..back<bool>()
-                ..back<bool>(),
+                ..back<dynamic>()
+                ..back<dynamic>(),
             );
           },
         );

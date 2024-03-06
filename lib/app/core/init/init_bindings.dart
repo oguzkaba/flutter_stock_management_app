@@ -9,8 +9,10 @@ class InitBindings extends Bindings {
   @override
   void dependencies() {
     Get
-      ..put<ConnectivityController>(ConnectivityController())
-      ..put<ThemeController>(ThemeController())
-      ..put<WindowController>(WindowController());
+      ..put<ConnectivityController>(ConnectivityController(), permanent: true)
+      ..put<ThemeController>(ThemeController(), permanent: true);
+    if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
+      Get.put<WindowController>(WindowController());
+    }
   }
 }

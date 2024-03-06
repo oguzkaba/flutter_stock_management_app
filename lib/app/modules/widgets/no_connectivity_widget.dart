@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/controllers/connectivity_controller.dart';
+import 'package:get/get.dart';
 
 class NoConnectivityWidget extends StatelessWidget {
   const NoConnectivityWidget({super.key});
@@ -10,23 +10,20 @@ class NoConnectivityWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      child: Scaffold(
-        body: Center(
+      child: SizedBox(
+        width: Get.width,
+        height: Get.height,
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.signal_wifi_off, size: 100),
-              const SizedBox(height: 20),
-              const Text(
+              Icon(Icons.signal_wifi_off, size: 100),
+              SizedBox(height: 20),
+              Text(
                 'No internet connection',
                 style: TextStyle(fontSize: 20),
               ),
-              const SizedBox(height: 20),
-              FilledButton.tonal(
-                onPressed: () =>
-                    ConnectivityController.to.connectivityActions(),
-                child: const Text('Try again'),
-              ),
+              SizedBox(height: 20),
             ],
           ),
         ),

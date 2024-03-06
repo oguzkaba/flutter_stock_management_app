@@ -6,19 +6,17 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
 
-  static const HOME = _Paths.HOME;
-  static const DASHBOARD = _Paths.DASHBOARD;
-  static const LOGIN = _Paths.LOGIN;
-  static const ADD_MATERIAL = _Paths.ADD_MATERIAL;
   static const SPLASH = _Paths.SPLASH;
-  static const NO_CONNECTIVITY = _Paths.NO_CONNECTIVITY;
+  static const LOGIN = _Paths.LOGIN;
+  static const DASHBOARD = _Paths.DASHBOARD;
+  static const HOME = _Paths.HOME;
+  static const ADD_MATERIAL = _Paths.ADD_MATERIAL;
 }
 
 abstract class _Paths {
-  static const HOME = '/home';
-  static const DASHBOARD = '/dashboard';
-  static const LOGIN = '/login';
-  static const ADD_MATERIAL = '/add-material';
   static const SPLASH = '/splash';
-  static const NO_CONNECTIVITY = '/no-internet';
+  static const LOGIN = '/login';
+  static const DASHBOARD = '/dashboard';
+  static const HOME = '/home';
+  static const ADD_MATERIAL = '/add-material';
 }

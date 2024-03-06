@@ -24,7 +24,7 @@ class SplashController extends GetxController {
     });
   }
 
-  Future<void> _redirectRoute() {
+  Future<void> _redirectRoute() async {
     return Future.delayed(
       Duration(seconds: _splashDuration),
       () {

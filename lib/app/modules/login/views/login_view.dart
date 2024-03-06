@@ -18,15 +18,15 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       body: Center(
         child: Card(
-          child: Obx(
-            () => SizedBox(
-              width: 440,
-              height: controller.getFormHeight(),
-              child: SingleChildScrollView(
-                child: Form(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  key: controller.formKey,
-                  child: Column(
+          child: SizedBox(
+            width: 440,
+            height: controller.getFormHeight(),
+            child: SingleChildScrollView(
+              child: Form(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                key: controller.formKey,
+                child: Obx(
+                  () => Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset('assets/images/logo.png', width: 32),

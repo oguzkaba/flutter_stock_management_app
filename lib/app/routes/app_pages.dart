@@ -9,7 +9,6 @@ import 'package:flutter_stock_management_app/app/modules/login/bindings/login_bi
 import 'package:flutter_stock_management_app/app/modules/login/views/login_view.dart';
 import 'package:flutter_stock_management_app/app/modules/splash/bindings/splash_binding.dart';
 import 'package:flutter_stock_management_app/app/modules/splash/views/splash_view.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/no_connectivity_widget.dart';
 import 'package:get/get.dart';
 
 // ignore_for_file: constant_identifier_names
@@ -35,14 +34,21 @@ class AppPages {
   /// and the binding class for that view.
   static final routes = [
     GetPage<Widget>(
-      name: _Paths.HOME,
-      page: HomeView.new,
-      binding: HomeBinding(),
-    ),
-    GetPage<Widget>(
       name: _Paths.DASHBOARD,
       page: DashboardView.new,
       binding: DashboardBinding(),
+      children: [
+        GetPage<Widget>(
+          name: _Paths.ADD_MATERIAL,
+          page: () => const AddMaterialView(),
+          binding: AddMaterialBinding(),
+        ),
+        GetPage<Widget>(
+          name: _Paths.HOME,
+          page: HomeView.new,
+          binding: HomeBinding(),
+        ),
+      ],
     ),
     GetPage<Widget>(
       name: _Paths.LOGIN,
@@ -50,18 +56,9 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage<Widget>(
-      name: _Paths.ADD_MATERIAL,
-      page: () => const AddMaterialView(),
-      binding: AddMaterialBinding(),
-    ),
-    GetPage<Widget>(
       name: _Paths.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
-    ),
-    GetPage<Widget>(
-      name: _Paths.NO_CONNECTIVITY,
-      page: () => const NoConnectivityWidget(),
     ),
   ];
 }
