@@ -74,7 +74,7 @@ class LoginView extends GetView<LoginController> {
         controller: controller.emailController,
         validator: (value) => controller.validateEmailTextField(value),
         fillColor: ColorConstants.myWhite,
-        hintText: 'Email',
+        hintText: 'email'.tr,
         prefixIconData: Icons.person,
       ),
     );
@@ -98,7 +98,7 @@ class LoginView extends GetView<LoginController> {
             ? Icons.visibility_rounded
             : Icons.visibility_off_rounded,
         fillColor: ColorConstants.myWhite,
-        hintText: 'Password',
+        hintText: 'password'.tr,
         prefixIconData: Icons.lock,
         onChanged: (value) => controller.validatePasswordTextField(value),
       ),
@@ -113,7 +113,7 @@ class LoginView extends GetView<LoginController> {
           onChanged: (value) => controller.toggleRememberMe(),
         ),
         Text(
-          'Remember me',
+          'remember'.tr,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10),
         ),
       ],
@@ -128,7 +128,7 @@ class LoginView extends GetView<LoginController> {
         onPressed: () async =>
             controller.isLoading ? null : await controller.login(),
         child: Text(
-          controller.isLoading ? 'Loading...' : 'Login',
+          controller.isLoading ? 'loading_login'.tr : 'login'.tr,
         ),
       ),
     );

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
 /// The `class AppConstants` is a utility class that contains
@@ -13,13 +14,13 @@ class AppConstants {
   AppConstants._();
 
   static List<String> navLabelList = [
-    'Home',
-    'Add',
-    'Distribute',
-    'Report',
-    'Print',
-    'Settings',
-    'Help',
+    'home'.tr,
+    'add'.tr,
+    'distribute'.tr,
+    'report'.tr,
+    'print'.tr,
+    'settings'.tr,
+    'help'.tr,
   ];
 
   static List<IconData> navIconList = [

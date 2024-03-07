@@ -32,23 +32,5 @@ class CustomBannerWidget {
         leading: child,
       ),
     );
-
-    // Get.snackbar(
-    //   title,
-    //   message,
-    //   mainButton: TextButton(
-    //     onPressed: Get.closeCurrentSnackbar,
-    //     child: const Text('OK'),
-    //   ),
-    //   snackPosition: SnackPosition.TOP,
-    //   backgroundColor: backgroundColor ??
-    //       (Get.isDarkMode
-    //           ? ColorConstants.myDark
-    //           : ColorConstants.primaryColor),
-    //   colorText: colorText ??
-    //       (Get.isDarkMode
-    //           ? ColorConstants.myLightGrey
-    //           : ColorConstants.myWhite),
-    // );
   }
 }

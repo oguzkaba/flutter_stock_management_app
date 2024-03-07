@@ -25,9 +25,9 @@ final class CustomExitButton extends StatelessWidget {
       ),
       onPressed: () {
         CustomDialogWidget.show(
-          dialogName: 'ExitDialog',
-          title: 'Exit',
-          child: const Text('Are you sure you want to exit?'),
+          dialogName: 'exit_dialog'.tr,
+          title: 'exit'.tr,
+          child: Text('are_you_sure_you_want_to_exit'.tr),
           onOk: () {
             SupabaseService.instance.signOut();
             Get.offAllNamed<dynamic>(Routes.LOGIN);
@@ -41,7 +41,7 @@ final class CustomExitButton extends StatelessWidget {
         color: ColorConstants.myLightRed,
       ),
       label: Text(
-        'Exit',
+        'exit'.tr,
         style: Theme.of(context)
             .textTheme
             .bodySmall

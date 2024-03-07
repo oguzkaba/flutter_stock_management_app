@@ -51,7 +51,7 @@ class AddMaterialView extends GetView<AddMaterialController> {
                       child: Row(
                         children: [
                           AppConstants.horizontalPaddingSmall,
-                          const Text('Material Operations: '),
+                          Text('material_operations'.tr),
                           AppConstants.horizontalPaddingSmall,
                           _addMaterialSection(),
                           AppConstants.horizontalPaddingSmall,
@@ -90,9 +90,9 @@ class AddMaterialView extends GetView<AddMaterialController> {
                   ),
                 ],
               )
-            : const Center(
+            : Center(
                 child: Text(
-                  'Please select report list to view details...',
+                  'select_report_view_details'.tr,
                 ),
               ),
       ),

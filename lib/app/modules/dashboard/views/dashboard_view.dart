@@ -4,10 +4,10 @@ import 'package:flutter_stock_management_app/app/core/constants/colors_constants
 import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
 import 'package:flutter_stock_management_app/app/core/utils/responsive.dart';
 import 'package:flutter_stock_management_app/app/modules/add_material/views/add_material_view.dart';
-import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
 import 'package:flutter_stock_management_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter_stock_management_app/app/modules/dashboard/views/widgets/drawer_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/dashboard/views/widgets/navrail_widget.dart';
+import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_dropdownbutton_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_icon_button_widget.dart';
 import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield_widget.dart';
@@ -53,7 +53,7 @@ class DashboardView extends GetView<DashboardController> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'Project: ',
+                              'project'.tr,
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                             AppConstants.horizontalPaddingSmall,
@@ -128,7 +128,7 @@ class DashboardView extends GetView<DashboardController> {
               //focusNode: controller.focus,
               onChanged: (value) => debugPrint('Search Enter Key'),
               fillColor: ColorConstants.myLightGrey,
-              hintText: 'Search here...',
+              hintText: 'search_here'.tr,
               prefixIconData: Icons.search,
             ),
           )

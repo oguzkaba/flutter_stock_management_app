@@ -16,17 +16,17 @@ class CustomDialogWidget {
       PopScope(
         canPop: false,
         child: AlertDialog(
-          title: Text(title ?? 'Alert Dialog'),
+          title: Text(title ?? 'alert_dialog'.tr),
           content: child,
           actions: isConnected ?? true
               ? [
                   TextButton(
                     onPressed: onCancel,
-                    child: const Text('Cancel'),
+                    child: Text('cancel'.tr),
                   ),
                   TextButton(
                     onPressed: onOk,
-                    child: const Text('OK'),
+                    child: Text('ok'.tr),
                   ),
                 ]
               : null,

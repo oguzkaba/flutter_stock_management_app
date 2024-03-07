@@ -18,21 +18,21 @@ class ConnectivityController extends GetxController {
   @override
   Future<void> onInit() async {
     /// Check if the user is onConnectivityChanged subscription
-
     _connectivity.onConnectivityChanged.listen(_onConnectivityChanged);
     super.onInit();
   }
 
   /// Check if the user is first connection status
   Future<void> isFirstTimeConnectivity() async {
-    final isFirsTimeOnline =
+    isOnline.value =
         await _connectivity.checkConnectivity() != ConnectivityResult.none;
-    connectivityActions(connectionState: isFirsTimeOnline, isFirstTime: true);
+
+    connectivityActions(connectionState: isOnline.value, isFirstTime: true);
   }
 
-  void _onConnectivityChanged(
+  Future<void> _onConnectivityChanged(
     ConnectivityResult connectivityResult,
-  ) {
+  ) async {
     /// Check if the user is not connected to the internet AND [old state] is true then
     if (isOnline.value == true &&
         connectivityResult == ConnectivityResult.none) {

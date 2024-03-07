@@ -47,11 +47,11 @@ class LoginController extends GetxController {
   String? validateEmailTextField(String? value) {
     if (value == null || value.isEmpty) {
       _isEmailValid.value = false;
-      return '*Email is required';
+      return 'email_is_required'.tr;
     }
     if (!GetUtils.isEmail(value)) {
       _isEmailValid.value = false;
-      return '*Invalid email';
+      return 'invalid_email'.tr;
     }
     _isEmailValid.value = true;
     return null;
@@ -60,11 +60,11 @@ class LoginController extends GetxController {
   String? validatePasswordTextField(String? value) {
     if (value == null || value.isEmpty) {
       _isPassValid.value = false;
-      return '*Password is required';
+      return 'password_is_required'.tr;
     }
     if (value.length < 6) {
       _isPassValid.value = false;
-      return '*Password must be at least 6 characters long';
+      return 'short_password'.tr;
     }
     _isPassValid.value = true;
     return null;
@@ -87,22 +87,22 @@ class LoginController extends GetxController {
       });
     } on AuthException catch (e) {
       await CustomSnackbarWidget.show(
-        'Error',
+        'error'.tr,
         e.message,
         backgroundColor: ColorConstants.myDarkRed,
         colorText: ColorConstants.myLightRed,
       );
     } on TimeoutException catch (e) {
       await CustomSnackbarWidget.show(
-        'Error',
+        'error'.tr,
         e.toString(),
         backgroundColor: ColorConstants.myDarkRed,
         colorText: ColorConstants.myLightRed,
       );
     } catch (e) {
       await CustomSnackbarWidget.show(
-        'Error',
-        'Unexpected error occurred',
+        'error'.tr,
+        'unexpected_error_occurred'.tr,
         backgroundColor: ColorConstants.myDarkRed,
         colorText: ColorConstants.myLightRed,
       );
