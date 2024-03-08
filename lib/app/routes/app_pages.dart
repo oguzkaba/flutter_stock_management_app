@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/modules/add_material/bindings/add_material_binding.dart';
-import 'package:flutter_stock_management_app/app/modules/add_material/views/add_material_view.dart';
-import 'package:flutter_stock_management_app/app/modules/dashboard/bindings/dashboard_binding.dart';
-import 'package:flutter_stock_management_app/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:flutter_stock_management_app/app/modules/home/bindings/home_binding.dart';
-import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
-import 'package:flutter_stock_management_app/app/modules/login/bindings/login_binding.dart';
-import 'package:flutter_stock_management_app/app/modules/login/views/login_view.dart';
-import 'package:flutter_stock_management_app/app/modules/splash/bindings/splash_binding.dart';
-import 'package:flutter_stock_management_app/app/modules/splash/views/splash_view.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/no_connectivity_widget.dart';
+
 import 'package:get/get.dart';
+
+import '../modules/add_material/bindings/add_material_binding.dart';
+import '../modules/add_material/views/add_material_view.dart';
+import '../modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/distribute/bindings/distribute_binding.dart';
+import '../modules/distribute/views/distribute_view.dart';
+import '../modules/help/bindings/help_binding.dart';
+import '../modules/help/views/help_view.dart';
+import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/home_view.dart';
+import '../modules/login/bindings/login_binding.dart';
+import '../modules/login/views/login_view.dart';
+import '../modules/notification/bindings/notification_binding.dart';
+import '../modules/notification/views/notification_view.dart';
+import '../modules/print/bindings/print_binding.dart';
+import '../modules/print/views/print_view.dart';
+import '../modules/report/bindings/report_binding.dart';
+import '../modules/report/views/report_view.dart';
+import '../modules/settings/bindings/settings_binding.dart';
+import '../modules/settings/views/settings_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
+import '../modules/widgets/no_connectivity_widget.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -62,6 +76,36 @@ class AppPages {
     GetPage<Widget>(
       name: _Paths.NOCONNECTIVITY,
       page: NoConnectivityWidget.new,
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => const SettingsView(),
+      binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.DISTRIBUTE,
+      page: () => const DistributeView(),
+      binding: DistributeBinding(),
+    ),
+    GetPage(
+      name: _Paths.REPORT,
+      page: () => const ReportView(),
+      binding: ReportBinding(),
+    ),
+    GetPage(
+      name: _Paths.HELP,
+      page: () => const HelpView(),
+      binding: HelpBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRINT,
+      page: () => const PrintView(),
+      binding: PrintBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
     ),
   ];
 }

@@ -12,6 +12,12 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const ADD_MATERIAL = _Paths.ADD_MATERIAL;
   static const NOCONNECTIVITY = _Paths.NOCONNECTIVITY;
+  static const SETTINGS = _Paths.SETTINGS;
+  static const DISTRIBUTE = _Paths.DISTRIBUTE;
+  static const REPORT = _Paths.REPORT;
+  static const HELP = _Paths.HELP;
+  static const PRINT = _Paths.PRINT;
+  static const NOTIFICATION = _Paths.NOTIFICATION;
 }
 
 abstract class _Paths {
@@ -21,4 +27,10 @@ abstract class _Paths {
   static const HOME = '/home';
   static const ADD_MATERIAL = '/add-material';
   static const NOCONNECTIVITY = '/no-connectivity';
+  static const SETTINGS = '/settings';
+  static const DISTRIBUTE = '/distribute';
+  static const REPORT = '/report';
+  static const HELP = '/help';
+  static const PRINT = '/print';
+  static const NOTIFICATION = '/notification';
 }
