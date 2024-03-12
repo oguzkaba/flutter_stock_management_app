@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
-import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
-import 'package:flutter_stock_management_app/app/modules/login/controllers/login_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield_widget.dart';
 import 'package:get/get.dart';
+
+import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/colors_constants.dart';
+import '../../widgets/custom_textfield_widget.dart';
+import '../controllers/login_controller.dart';
 
 /// The `class LoginView extends GetView<LoginController>` is defining a Flutter widget that represents
 /// the view for the login screen. It extends the `GetView` class from the GetX package, which allows

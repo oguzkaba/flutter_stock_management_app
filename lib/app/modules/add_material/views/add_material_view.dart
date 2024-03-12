@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
-import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
-import 'package:flutter_stock_management_app/app/core/utils/datagrid.dart';
-import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/add_material/widgets/add_new_report_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/home/controllers/home_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_dialog_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_dropdownmenu_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_filled_icon_button_widget.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+
+import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/colors_constants.dart';
+import '../../../core/utils/datagrid.dart';
+import '../../home/controllers/home_controller.dart';
+import '../../widgets/custom_dialog_widget.dart';
+import '../../widgets/custom_dropdownmenu_widget.dart';
+import '../../widgets/custom_filled_icon_button_widget.dart';
+import '../controllers/add_material_controller.dart';
+import '../widgets/add_new_report_widget.dart';
 
 /// Add Material View
 class AddMaterialView extends GetView<AddMaterialController> {

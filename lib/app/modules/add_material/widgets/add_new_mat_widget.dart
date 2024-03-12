@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/modules/add_material/controllers/add_material_controller.dart';
 import 'package:get/get.dart';
+
+import '../controllers/add_material_controller.dart';
 
 /// Add Material View
 class AddNewMaterialWidget extends GetView<AddMaterialController> {

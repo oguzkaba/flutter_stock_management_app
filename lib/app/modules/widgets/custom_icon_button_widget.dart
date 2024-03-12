@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
 import 'package:get/get.dart';
+
+import '../../core/constants/colors_constants.dart';
 
 /// The `CustomIconButton` class is a custom widget in Flutter that extends the `StatelessWidget` class.
 /// It represents a button with an icon that can be tapped. It takes in parameters such as `iconData`

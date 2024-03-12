@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
-import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
-import 'package:flutter_stock_management_app/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_exit_button_widget.dart';
 import 'package:get/get.dart';
+
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/colors_constants.dart';
+import '../../../widgets/custom_exit_button_widget.dart';
+import '../../controllers/dashboard_controller.dart';
 
 /// The code is defining a class called `NavigationRailWidget` that extends the `StatelessWidget` class.
 /// This class represents a widget that displays a navigation rail, which is a vertical list of

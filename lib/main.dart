@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
-import 'package:flutter_stock_management_app/app/core/init/init_bindings.dart';
-import 'package:flutter_stock_management_app/app/core/themes/theme.dart';
-import 'package:flutter_stock_management_app/app/core/translations/app_translations.dart';
-import 'package:flutter_stock_management_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:window_manager/window_manager.dart';
+
+import 'app/core/controllers/theme_controller.dart';
+import 'app/core/init/init_bindings.dart';
+import 'app/core/themes/theme.dart';
+import 'app/core/translations/app_translations.dart';
+import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
   /// Initialize window manager for desktop

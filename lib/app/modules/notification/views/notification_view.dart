@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs
 
+import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/modules/notification/controllers/notification_controller.dart';
 import 'package:get/get.dart';
 
-import '../controllers/notification_controller.dart';
-
 class NotificationView extends GetView<NotificationController> {
-  const NotificationView({Key? key}) : super(key: key);
+  const NotificationView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

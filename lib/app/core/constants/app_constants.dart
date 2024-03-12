@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 
 /// The `class AppConstants` is a utility class that contains
 /// various constants and configurations for

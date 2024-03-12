@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
-import 'package:flutter_stock_management_app/app/core/services/supabase_service.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_dialog_widget.dart';
-import 'package:flutter_stock_management_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
+
+import '../../core/constants/colors_constants.dart';
+import '../../core/services/supabase_service.dart';
+import '../../routes/app_pages.dart';
+import 'custom_dialog_widget.dart';
 
 /// The code is defining a class called `ExitButton` that
 /// extends the `StatelessWidget` class. The

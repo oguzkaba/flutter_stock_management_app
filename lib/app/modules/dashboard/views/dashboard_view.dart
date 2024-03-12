@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/core/constants/app_constants.dart';
-import 'package:flutter_stock_management_app/app/core/constants/colors_constants.dart';
-import 'package:flutter_stock_management_app/app/core/controllers/theme_controller.dart';
-import 'package:flutter_stock_management_app/app/core/utils/responsive.dart';
-import 'package:flutter_stock_management_app/app/modules/add_material/views/add_material_view.dart';
-import 'package:flutter_stock_management_app/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:flutter_stock_management_app/app/modules/dashboard/views/widgets/drawer_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/dashboard/views/widgets/navrail_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/distribute/views/distribute_view.dart';
-import 'package:flutter_stock_management_app/app/modules/help/views/help_view.dart';
-import 'package:flutter_stock_management_app/app/modules/home/views/home_view.dart';
-import 'package:flutter_stock_management_app/app/modules/print/views/print_view.dart';
-import 'package:flutter_stock_management_app/app/modules/report/views/report_view.dart';
-import 'package:flutter_stock_management_app/app/modules/settings/views/settings_view.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_dropdownbutton_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_icon_button_widget.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_textfield_widget.dart';
 import 'package:get/get.dart';
+
+import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/colors_constants.dart';
+import '../../../core/controllers/theme_controller.dart';
+import '../../../core/utils/responsive.dart';
+import '../../add_material/views/add_material_view.dart';
+import '../../distribute/views/distribute_view.dart';
+import '../../help/views/help_view.dart';
+import '../../home/views/home_view.dart';
+import '../../print/views/print_view.dart';
+import '../../report/views/report_view.dart';
+import '../../settings/views/settings_view.dart';
+import '../../widgets/custom_dropdownbutton_widget.dart';
+import '../../widgets/custom_icon_button_widget.dart';
+import '../../widgets/custom_textfield_widget.dart';
+import '../controllers/dashboard_controller.dart';
+import 'widgets/drawer_widget.dart';
+import 'widgets/navrail_widget.dart';
 
 /// This Dart class represents a dashboard view that is associated with a specific controller.
 class DashboardView extends GetView<DashboardController> {
@@ -39,7 +40,7 @@ class DashboardView extends GetView<DashboardController> {
                 drawer: !GetPlatform.isDesktop ? const DrawerWidget() : null,
                 appBar: PreferredSize(
                   preferredSize: const Size.fromHeight(60),
-                  //TODO: Add a custom app bar
+                  //TO-DO: Add a custom app bar
                   child: AnimatedCrossFade(
                     crossFadeState: controller.pageIndex == 0
                         ? CrossFadeState.showFirst
@@ -158,6 +159,6 @@ class DashboardView extends GetView<DashboardController> {
             ),
           )
         : CustomIconButton(iconData: Icons.search_rounded, onTap: () {});
-    //TODO: Add mobile search functionality
+    //TO-DO: Add mobile search functionality
   }
 }

@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/distribute_controller.dart';
 
 class DistributeView extends GetView<DistributeController> {
-  const DistributeView({Key? key}) : super(key: key);
+  const DistributeView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

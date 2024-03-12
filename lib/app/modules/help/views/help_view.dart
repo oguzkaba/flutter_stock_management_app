@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs
 
+import 'package:flutter/material.dart';
+import 'package:flutter_stock_management_app/app/modules/help/controllers/help_controller.dart';
 import 'package:get/get.dart';
 
-import '../controllers/help_controller.dart';
-
 class HelpView extends GetView<HelpController> {
-  const HelpView({Key? key}) : super(key: key);
+  const HelpView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

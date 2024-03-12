@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stock_management_app/app/modules/widgets/custom_dialog_widget.dart';
 import 'package:get/get.dart';
 import 'package:window_manager/window_manager.dart';
+
+import '../../modules/widgets/custom_dialog_widget.dart';
 
 /// The `WindowController` class is a controller class that extends the `GetxController` class and
 /// implements the `WindowListener` interface.

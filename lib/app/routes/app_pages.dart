@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../modules/add_material/bindings/add_material_binding.dart';
@@ -77,32 +76,32 @@ class AppPages {
       name: _Paths.NOCONNECTIVITY,
       page: NoConnectivityWidget.new,
     ),
-    GetPage(
+    GetPage<Widget>(
       name: _Paths.SETTINGS,
       page: () => const SettingsView(),
       binding: SettingsBinding(),
     ),
-    GetPage(
+    GetPage<Widget>(
       name: _Paths.DISTRIBUTE,
       page: () => const DistributeView(),
       binding: DistributeBinding(),
     ),
-    GetPage(
+    GetPage<Widget>(
       name: _Paths.REPORT,
       page: () => const ReportView(),
       binding: ReportBinding(),
     ),
-    GetPage(
+    GetPage<Widget>(
       name: _Paths.HELP,
       page: () => const HelpView(),
       binding: HelpBinding(),
     ),
-    GetPage(
+    GetPage<Widget>(
       name: _Paths.PRINT,
       page: () => const PrintView(),
       binding: PrintBinding(),
     ),
-    GetPage(
+    GetPage<Widget>(
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),

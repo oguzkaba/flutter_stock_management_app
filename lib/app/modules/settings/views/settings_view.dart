@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/settings_controller.dart';
 
 class SettingsView extends GetView<SettingsController> {
-  const SettingsView({Key? key}) : super(key: key);
+  const SettingsView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
