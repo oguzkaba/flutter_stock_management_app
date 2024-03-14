@@ -49,9 +49,7 @@ class ImportDataModel {
 
   factory ImportDataModel.fromJson(Map<String, dynamic> json) =>
       ImportDataModel(
-        siraNo: json['SIRA NO'] == null
-            ? null
-            : int.parse(json['SIRA NO'].toString()),
+        siraNo: _jsonToInt(json['SIRA NO']),
         aracNo: json['ARAÇ NO']?.toString(),
         malzemeninCinsi: json['MALZEMENİN CİNSİ']?.toString(),
         urunTanimi: json['ÜRÜN TANIMI']?.toString(),
@@ -59,32 +57,32 @@ class ImportDataModel {
         dn: json['DN']?.toString(),
         itemNo: json['ITEM NO']?.toString(),
         heatNo: json['HEAT NO']?.toString(),
-        adet: json['ADET'] == null ? null : int.parse(json['ADET'].toString()),
-        gelenAdet: json['GELEN ADET'] == null
+        adet: _jsonToInt(json['İRSALİYE ADET']),
+        gelenAdet: _jsonToInt(json['GELEN ADET']),
+        imalataVerilenAdet: _jsonToInt(json['İMALATA VERİLEN ADET']),
+        santiyeSevkAdet: _jsonToInt(json['SANTİYE SEVK ADET']),
+        kalanAdet: _jsonToInt(json['KALAN ADET']),
+        gelisTarihi: (json['GELİŞ TARİHİ'] == null)
             ? null
-            : int.parse(json['GELEN ADET'].toString()),
-        imalataVerilenAdet: json['İMALATA VERİLEN ADET'] == null
-            ? null
-            : int.parse(json['İADE ADET'].toString()),
-        santiyeSevkAdet: json['SANTİYE SEVK ADET'] == null
-            ? null
-            : int.parse(json['SANTİYE SEVK ADET'].toString()),
-        kalanAdet: json['KALAN ADET'] == null
-            ? null
-            : int.parse(json['KALAN ADET'].toString()),
-        gelisTarihi: json['GELİŞ TARİHİ'] == null
-            ? null
-            : Utils.dateFormatDDMMYYYY(
-                DateTime.parse(json['GELİŞ TARİHİ'].toString()),
-              ),
+            : (json['GELİŞ TARİHİ'].toString() == '')
+                ? '-'
+                : Utils.dateFormatDDMMYYYY(
+                    DateTime.parse(json['GELİŞ TARİHİ'].toString()),
+                  ),
         gelenFirma: json['GELEN FİRMA']?.toString(),
         shipmentNumber: json['SHIPMENT NUMBER']?.toString(),
         sandikNo: json['SANDIK NO']?.toString(),
-        karantina: json['KARANTİNA'] == null
-            ? null
-            : int.parse(json['SANTİYE SEVK ADET'].toString()),
+        karantina: _jsonToInt(json['KARANTİNA']),
         not: json['AÇIKLAMA']?.toString(),
       );
+
+  /// This method is used to convert the dynamic type to int.
+  static int? _jsonToInt(dynamic json) => (json == null)
+      ? 0
+      : (json.toString() == '')
+          ? 0
+          : int.parse(json.toString());
+
   final int? siraNo;
   final String? aracNo;
   final String? malzemeninCinsi;
